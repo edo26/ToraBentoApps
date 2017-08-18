@@ -3,19 +3,19 @@
     <tab
         id="@+id/tab_home"
         icon="@drawable/ic_home_white_24dp"
-        activeColor="@color/colorPrimary"
+        activeColor="@color/PinkTora"
         title="Home"
         />
     <tab
         id="@+id/tab_keranjang"
         icon="@drawable/ic_shopping_cart_white_24dp"
-        activeColor="@color/colorPrimary"
+        activeColor="@color/PinkTora"
         title="Keranjang"
         />
     <tab
         id="@+id/tab_akun"
         icon="@drawable/ic_account_circle_white_24dp"
-        activeColor="@color/colorPrimary"
+        activeColor="@color/PinkTora"
         title="Akun"
         />
 </Tab>
