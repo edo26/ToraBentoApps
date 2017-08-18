@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/contact"
             android:hint="Username"
-            android:layout_margin="3dp"
+            android:layout_marginBottom="10dp"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapEditText
@@ -42,7 +42,7 @@
             android:inputType="textPassword"
             android:drawableLeft="@drawable/login"
             android:hint="Password"
-            android:layout_margin="3dp"
+            android:layout_marginBottom="15dp"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -55,7 +55,7 @@
             app:bootstrapSize="lg"
             app:buttonMode="regular"
             app:showOutline="false"
-            android:layout_margin="3dp"
+            android:layout_marginBottom="15dp"
             />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -68,7 +68,7 @@
             app:bootstrapSize="lg"
             app:buttonMode="regular"
             app:showOutline="false"
-            android:layout_margin="3dp"
+            android:layout_marginBottom="15dp"
             />
 
 
