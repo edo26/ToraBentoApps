@@ -1,5 +1,6 @@
 package edu.edo.torabentoapps;
 
+import android.app.ProgressDialog;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +12,12 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import edu.edo.torabentoapps.fragment.AkunFragment;
 import edu.edo.torabentoapps.fragment.ItemFragment;
+import edu.edo.torabentoapps.fragment.TransaksiFragment;
 
 public class MainActivity extends AppCompatActivity {
     private BottomBar bottomBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new ItemFragment();
                 }else if(tabId == R.id.tab_akun){
                     fragment = new AkunFragment();
+                }else if(tabId == R.id.tab_keranjang){
+                    fragment = new TransaksiFragment();
                 }
                 getSupportFragmentManager()
                         .beginTransaction()

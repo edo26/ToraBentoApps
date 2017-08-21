@@ -1,5 +1,6 @@
 package edu.edo.torabentoapps.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,9 @@ import com.beardedhen.androidbootstrap.BootstrapEditText;
 import java.util.zip.Inflater;
 
 import edu.edo.torabentoapps.R;
+import edu.edo.torabentoapps.daftarreseller;
+
+import static edu.edo.torabentoapps.R.id.daftarreseller;
 
 /**
  * Created by anggy on 17/08/2017.
@@ -38,6 +42,12 @@ public class AkunFragment extends Fragment {
         login = (BootstrapButton)view.findViewById(R.id.btnbirumuda);
         daftar = (BootstrapButton)view.findViewById(R.id.btnmerah);
 
+        daftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), edu.edo.torabentoapps.daftarreseller.class));
+            }
+        });
 
         return view;
     }
