@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:bb_tabXmlResource="@xml/bottom_bar"
-        android:background="@color/White"
+        android:background="@color/PinkTora"
         app:bb_inActiveTabAlpha="1.9"
         android:layout_alignParentBottom="true" />
 
