@@ -49,7 +49,7 @@
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/nama"
+                android:id="@+id/namareseller"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="Nama Lengkap"
@@ -60,7 +60,7 @@
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/alamat"
+                android:id="@+id/alamatreseller"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:hint="Alamat"
@@ -73,7 +73,7 @@
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/nomorhp"
+                android:id="@+id/nomorhpreseller"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="Nomor handphone"
@@ -84,7 +84,7 @@
                 />
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/email"
+                android:id="@+id/emailreseller"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="Email"

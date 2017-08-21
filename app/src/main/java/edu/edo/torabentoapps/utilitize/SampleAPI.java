@@ -8,20 +8,43 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 
 import edu.edo.torabentoapps.BuildConfig;
+import edu.edo.torabentoapps.Model.DataArray;
+import edu.edo.torabentoapps.Model.ResellerModel;
 import okhttp3.Cache;
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface SampleAPI {
 
-  String BASE_URL = "https://query.yahooapis.com/v1/public/"; //Ganti base url nya sesuai kebutuhan
+  String BASE_URL = "https://kptoratorabento.000webhostapp.com/"; //Ganti base url nya sesuai kebutuhan
 
   //Sesuai kebutuhan get data nya
   //@GET("your_endpoint") Call<YOUR_POJO> getWeather(@Query("from") String from);
   //Contoh @GET("view.php") Call<Model> getModel();
+
+
+  @FormUrlEncoded
+  @POST("json_t_reseller.php?operasi=insert")
+  Call<ResellerModel> insertData(@Field("nama_reseller") String namareseller,
+                                 @Field("alamat") String alamat,
+                                 @Field("nomorhp") String nomorhp,
+                                 @Field("email") String email,
+                                 @Field("username") String username,
+                                 @Field("password") String password
+                             );
+
+  @FormUrlEncoded
+  @POST("json_t_reseller.php?operasi=validasi")
+  Call<ResellerModel> validasii(@Field("username") String username, @Field("password") String password);
+
 
   class Factory {
     private static SampleAPI service;
