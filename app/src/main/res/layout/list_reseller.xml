@@ -50,7 +50,7 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:padding="16dp"
-            android:layout_weight="1"
+            android:layout_weight="1.8"
             >
 
             <com.beardedhen.androidbootstrap.BootstrapButton
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:roundedCorners="true"
-                app:bootstrapBrand="danger"
+                app:bootstrapBrand="info"
                 android:text="TAMBAH MAKANAN"
                 app:bootstrapSize="lg"
                 app:buttonMode="regular"
@@ -67,6 +67,21 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/tombollogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:roundedCorners="true"
+            app:bootstrapBrand="danger"
+            android:text="LOGOUT"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            />
 
         </LinearLayout>
 
