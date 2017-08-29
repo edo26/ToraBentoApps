@@ -17,6 +17,7 @@ import java.util.zip.Inflater;
 import edu.edo.torabentoapps.Model.ResellerModel;
 import edu.edo.torabentoapps.R;
 import edu.edo.torabentoapps.daftarreseller;
+import edu.edo.torabentoapps.loginreseller;
 import edu.edo.torabentoapps.utilitize.SampleAPI;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,7 +81,9 @@ public class AkunFragment extends Fragment {
             public void onResponse(Call<ResellerModel> call, Response<ResellerModel> response) {
                 if (response.isSuccessful()){
                     if (response.body().getNilai().equals(1)){
-                        Toast.makeText(getActivity(), "Welcome "+getUsername(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), "Welcome "+getUsername(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), loginreseller.class));
+                        getActivity().finish();
                     }else {
                         Toast.makeText(getActivity(), "Your username or password are wrong.", Toast.LENGTH_SHORT).show();
                     }
