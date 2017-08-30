@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import edu.edo.torabentoapps.Model.itemModel;
 import edu.edo.torabentoapps.R;
@@ -77,11 +79,13 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
 
     public void onBindViewHolder(ViewHolder viewHolder, int i){
         //gambil data
+        Locale local = new Locale("in","ID");
         itemModel iModel = mMakanan.get(i);
+        NumberFormat nf = NumberFormat.getCurrencyInstance(local);
         viewHolder.nmMakanan.setText(iModel.getNmMakanan());
         viewHolder.gambar.setImageResource(iModel.getThumbnail());
         viewHolder.status.setText(iModel.getKetersediaan());
-        viewHolder.harga.setText(iModel.getHarga());
+        viewHolder.harga.setText(nf.format(Double.valueOf(iModel.getHarga())));
     }
 
     public int getItemCount(){
