@@ -3,31 +3,22 @@
     <tab
         id="@+id/tab_home"
         icon="@drawable/ic_home_white_24dp"
-<<<<<<< HEAD
-        activeColor="@color/PinkTora"
-=======
         activeColor="@color/Black"
->>>>>>> 7d4970aad63503677f1ca577c5bcb54291813596
+        barColorWhenSelected="@color/PinkTora"
         title="Home"
         />
     <tab
         id="@+id/tab_keranjang"
         icon="@drawable/ic_shopping_cart_white_24dp"
-<<<<<<< HEAD
-        activeColor="@color/PinkTora"
-=======
         activeColor="@color/Black"
->>>>>>> 7d4970aad63503677f1ca577c5bcb54291813596
+        barColorWhenSelected="@color/PinkTora"
         title="Keranjang"
         />
     <tab
         id="@+id/tab_akun"
         icon="@drawable/ic_account_circle_white_24dp"
-<<<<<<< HEAD
-        activeColor="@color/PinkTora"
-=======
         activeColor="@color/Black"
->>>>>>> 7d4970aad63503677f1ca577c5bcb54291813596
+        barColorWhenSelected="@color/PinkTora"
         title="Akun"
         />
 </Tab>
