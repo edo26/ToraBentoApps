@@ -1,15 +1,23 @@
 package edu.edo.torabentoapps.utilitize;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 //import com.andrei.template.BuildConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import edu.edo.torabentoapps.BuildConfig;
 import edu.edo.torabentoapps.Model.DataArray;
 import edu.edo.torabentoapps.Model.ResellerModel;
+import edu.edo.torabentoapps.Model.itemModel;
+import edu.edo.torabentoapps.Model.itemRespon;
+import edu.edo.torabentoapps.adapter.gridItemAdapter;
+import edu.edo.torabentoapps.daftarreseller;
+import edu.edo.torabentoapps.fragment.ItemFragment;
 import okhttp3.Cache;
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
@@ -45,11 +53,14 @@ public interface SampleAPI {
   @POST("json_t_reseller.php?operasi=validasi")
   Call<ResellerModel> validasii(@Field("username") String username, @Field("password") String password);
 
+  @GET("json_t_makanan.php?operasi=view")
+  Call<itemRespon> viewMakanan();
+
 
   class Factory {
     private static SampleAPI service;
 
-    public static SampleAPI getIstance(Context context) {
+    public static SampleAPI getIstance(FragmentActivity context) {
       if (service == null) {
 
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
