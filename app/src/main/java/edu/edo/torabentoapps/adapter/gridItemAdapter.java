@@ -86,6 +86,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         viewHolder.gambar.setImageResource(iModel.getThumbnail());
         viewHolder.status.setText(iModel.getKetersediaan());
         viewHolder.harga.setText(nf.format(Double.valueOf(iModel.getHarga())));
+        viewHolder.stok.setText("Stok : "+iModel.getStok());
     }
 
     public int getItemCount(){
@@ -98,6 +99,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         public TextView nmMakanan;
         public TextView status;
         public TextView harga;
+        public TextView stok;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -105,6 +107,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
             nmMakanan =(TextView)itemView.findViewById(R.id.nmMakanan);
             status =(TextView)itemView.findViewById(R.id.status);
             harga =(TextView)itemView.findViewById(R.id.harga);
+            stok = (TextView)itemView.findViewById(R.id.stokmakantv);
 
         }
     }

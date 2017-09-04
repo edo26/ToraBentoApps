@@ -32,15 +32,33 @@
                />
 
            <TextView
+               android:text="tes"
                android:layout_marginLeft="6dp"
                android:id="@+id/nmMakanan"
-               android:layout_width="match_parent"
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="22sp"
                android:layout_marginBottom="4dp"
                android:layout_below="@id/thumbnails"
                />
+
            <TextView
+               android:id="@+id/stokmakantv"
+               android:layout_toRightOf="@id/nmMakanan"
+               android:layout_alignParentRight="true"
+               android:layout_alignParentEnd="true"
+               android:layout_above="@+id/harga"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="end"
+               android:textSize="12sp"
+               android:textColor="@color/Black"
+               android:text="tes4"
+               android:layout_marginRight="6dp"
+               />
+
+           <TextView
+               android:text="tes2"
                android:layout_marginLeft="6dp"
                android:id="@+id/status"
                android:layout_width="wrap_content"
@@ -50,6 +68,7 @@
                android:layout_below="@id/nmMakanan"
                />
            <TextView
+               android:text="tes3"
                android:layout_marginRight="6dp"
                android:id="@+id/harga"
                android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package edu.edo.torabentoapps.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,6 +34,7 @@ public class AkunFragment extends Fragment {
 
     BootstrapEditText username,password;
     BootstrapButton login,daftar;
+    ProgressDialog pd;
 
     public AkunFragment() {
 
@@ -44,6 +46,9 @@ public class AkunFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.login_activity, container, false);
 
+        pd = new ProgressDialog(getActivity());
+        pd.setTitle("Pesan");
+        pd.setMessage("Memuat...");
         username = (BootstrapEditText)view.findViewById(R.id.username);
         password = (BootstrapEditText)view.findViewById(R.id.password);
         login = (BootstrapButton)view.findViewById(R.id.btnbirumuda);
@@ -52,6 +57,7 @@ public class AkunFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                pd.show();
                 cekDulu();
             }
         });
@@ -68,6 +74,7 @@ public class AkunFragment extends Fragment {
 
     private void cekDulu(){
         if(getUsername().equals("") || getPassword().equals("")){
+            pd.dismiss();
             Toast.makeText(getActivity(), "Username atau Password belum terisi.", Toast.LENGTH_SHORT).show();
         }else {
             validation();
@@ -81,19 +88,23 @@ public class AkunFragment extends Fragment {
             public void onResponse(Call<ResellerModel> call, Response<ResellerModel> response) {
                 if (response.isSuccessful()){
                     if (response.body().getNilai().equals(1)){
+                        pd.dismiss();
                         //Toast.makeText(getActivity(), "Welcome "+getUsername(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), loginreseller.class));
                         getActivity().finish();
                     }else {
+                        pd.dismiss();
                         Toast.makeText(getActivity(), "Your username or password are wrong.", Toast.LENGTH_SHORT).show();
                     }
                 }else {
+                    pd.dismiss();
                     Toast.makeText(getActivity(), "Unsuccessfully : "+response.errorBody(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResellerModel> call, Throwable t) {
+                pd.dismiss();
                 Toast.makeText(getActivity(), "onFailure : "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
