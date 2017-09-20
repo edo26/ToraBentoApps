@@ -68,6 +68,7 @@ public interface SampleAPI {
                                  @Field("gambar") String gambar);
 
 
+
   class Factory {
     private static SampleAPI service;
 
