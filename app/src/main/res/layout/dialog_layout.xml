@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/gambarBeli"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/makananBeli"
+        android:text="Tes"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@+id/gambarBeli"/>
+    <TextView
+        android:id="@+id/labelharga"
+        android:text="Harga : "
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/makananBeli"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp" />
+    <TextView
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:id="@+id/hargabeli"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/labelharga"
+        android:layout_below="@+id/makananBeli"/>
+    <TextView
+        android:id="@+id/labelstok"
+        android:layout_margin="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelharga"
+        android:text="Stok : "
+        android:textSize="20sp"/>
+    <TextView
+        android:layout_margin="6dp"
+        android:id="@+id/stokterserdia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/labelharga"
+        android:layout_below="@+id/labelharga"/>
+    <TextView
+        android:id="@+id/labelqty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QTY"
+        android:gravity="center"
+        android:layout_below="@+id/labelstok"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelqty"
+        android:focusable="true"
+        android:textSize="20sp" />
+
+</RelativeLayout>
