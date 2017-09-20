@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Tab>
+<Tabs>
     <tab
         id="@+id/tab_home"
-        icon="@drawable/ic_home_white_24dp"
+        icon="@drawable/ic_home"
         activeColor="@color/Black"
         barColorWhenSelected="@color/PinkTora"
         title="Home"
         />
     <tab
         id="@+id/tab_keranjang"
-        icon="@drawable/ic_shopping_cart_white_24dp"
+        icon="@drawable/ic_shopping_cart"
         activeColor="@color/Black"
         barColorWhenSelected="@color/PinkTora"
         title="Keranjang"
         />
     <tab
         id="@+id/tab_akun"
-        icon="@drawable/ic_account_circle_white_24dp"
+        icon="@drawable/ic_account_circle"
         activeColor="@color/Black"
         barColorWhenSelected="@color/PinkTora"
         title="Akun"
         />
-</Tab>
+</Tabs>

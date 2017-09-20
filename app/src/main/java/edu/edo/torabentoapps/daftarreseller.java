@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
 import edu.edo.torabentoapps.Model.DataArray;
 import edu.edo.torabentoapps.Model.ResellerModel;
@@ -55,7 +56,7 @@ public class daftarreseller extends AppCompatActivity {
             Toast.makeText(this, "Data ada yang belum lengkap.", Toast.LENGTH_SHORT).show();
         }else{
             inputData();
-            bersihkan();
+            //bersihkan();
         }
     }
 
@@ -66,6 +67,32 @@ public class daftarreseller extends AppCompatActivity {
             public void onResponse(Call<ResellerModel> call, Response<ResellerModel> response) {
                 //Toast.makeText(daftarreseller.this, "Berhasil ?", Toast.LENGTH_SHORT).show();
                 if(response.isSuccessful()){
+                    BackgroundMail.newBuilder(daftarreseller.this)
+                            .withUsername("rhydhohcker@gmail.com")
+                            .withPassword("miftahurido260896")
+                            .withMailto(email.getText().toString())
+                            .withType(BackgroundMail.TYPE_PLAIN)
+                            .withSubject("KONFIRMASI EMAIL TORA - TORA BENTO")
+                            .withBody("Terima kasih sudah melakukan pendaftaran sebagai Reseller di Tora - tora bento.")
+                            .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
+                                @Override
+                                public void onSuccess() {
+                                    //do some magic
+
+                                    Toast.makeText(daftarreseller.this, "Konfirmasi email telah dikirim dan sukses.", Toast.LENGTH_SHORT).show();
+
+                                }
+                            })
+                            .withOnFailCallback(new BackgroundMail.OnFailCallback() {
+                                @Override
+                                public void onFail() {
+                                    //do some magic
+
+                                    Toast.makeText(daftarreseller.this, "Gagal mengirim konfirmasi email.", Toast.LENGTH_SHORT).show();
+
+                                }
+                            })
+                            .send().isProgressVisible();
                     Toast.makeText(daftarreseller.this, "Data berhasil di tambahkan, Tapi ada pesan "+response.message(), Toast.LENGTH_SHORT).show();
                     //Toast.makeText(daftarreseller.this, getNama()+getAlamat()+getEmail()+getNomorhp(), Toast.LENGTH_SHORT).show();
                 }else{
