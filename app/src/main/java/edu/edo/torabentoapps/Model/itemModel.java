@@ -31,7 +31,9 @@ public class itemModel {
         this.stok = stok;
     }
 
-    private int thumbnail;
+    @SerializedName("gambar")
+    @Expose
+    private String gambar;
 
     public String getNmMakanan() {
         return nmMakanan;
@@ -57,11 +59,11 @@ public class itemModel {
         this.ketersediaan = ketersediaan;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public String getGambar() {
+        return gambar;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
     }
 }

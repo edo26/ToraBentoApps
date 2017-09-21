@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,45 +30,11 @@ import retrofit2.Response;
 
 public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHolder>{
     private List<itemModel> mMakanan;
+    private Context konteks;
 
-    public gridItemAdapter(List<itemModel> mMakanan){
+    public gridItemAdapter(List<itemModel> mMakanan, Context konteks) {
         this.mMakanan = mMakanan;
-        //nanti ngambil di database kecuali gambar
-/*        itemModel im = new itemModel();
-        im.setNmMakanan("Shrimp Roll");
-        im.setHarga("Rp. 20.000");
-        im.setThumbnail(R.drawable.shrimproll);
-        im.setKetersediaan("Tersedia");
-        itemMakanan.add(im);
-
-        im = new itemModel();
-        im.setNmMakanan("Shrimp Roll");
-        im.setHarga("Rp. 20.000");
-        im.setThumbnail(R.drawable.shrimproll);
-        im.setKetersediaan("Tersedia");
-        itemMakanan.add(im);
-
-        im = new itemModel();
-        im.setNmMakanan("Shrimp Roll");
-        im.setHarga("Rp. 20.000");
-        im.setThumbnail(R.drawable.shrimproll);
-        im.setKetersediaan("Tersedia");
-        itemMakanan.add(im);
-
-        im = new itemModel();
-        im.setNmMakanan("Shrimp Roll");
-        im.setHarga("Rp. 20.000");
-        im.setThumbnail(R.drawable.shrimproll);
-        im.setKetersediaan("Tersedia");
-        itemMakanan.add(im);
-
-        im = new itemModel();
-        im.setNmMakanan("Shrimp Roll");
-        im.setHarga("Rp. 20.000");
-        im.setThumbnail(R.drawable.shrimproll);
-        im.setKetersediaan("Tersedia");
-        itemMakanan.add(im);
-  */
+        this.konteks = konteks;
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup viewgroup, int i){
@@ -83,7 +51,8 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         itemModel iModel = mMakanan.get(i);
         NumberFormat nf = NumberFormat.getCurrencyInstance(local);
         viewHolder.nmMakanan.setText(iModel.getNmMakanan());
-        viewHolder.gambar.setImageResource(iModel.getThumbnail());
+        Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(viewHolder.gambar);
+        //viewHolder.gambar.setImageResource(iModel.getThumbnail());
         viewHolder.status.setText(iModel.getKetersediaan());
         viewHolder.harga.setText(nf.format(Double.valueOf(iModel.getHarga())));
         viewHolder.stok.setText("Stok : "+iModel.getStok());

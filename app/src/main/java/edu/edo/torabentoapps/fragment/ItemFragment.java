@@ -45,7 +45,7 @@ public class ItemFragment extends Fragment {
         mRecyler.setHasFixedSize(true);
         mLayout = new GridLayoutManager(getActivity(), 2);
         mRecyler.setLayoutManager(mLayout);
-        mAdapter = new gridItemAdapter(imMakanan);
+        mAdapter = new gridItemAdapter(imMakanan,getContext());
         mRecyler.setAdapter(mAdapter);
         //isi load
         loadMakanan();
@@ -60,7 +60,7 @@ public class ItemFragment extends Fragment {
                 if (response.body().getNilai().equals(1)) {
                     //Toast.makeText(getActivity(), "onSuccessfully Response", Toast.LENGTH_SHORT).show();
                     imMakanan = response.body().getLiModel();
-                    mAdapter = new gridItemAdapter(imMakanan);
+                    mAdapter = new gridItemAdapter(imMakanan,getContext());
                     mRecyler.setAdapter(mAdapter);
                     ((MainActivity)getActivity()).pd.dismiss();
                     ((MainActivity)getActivity()).pd.cancel();

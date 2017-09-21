@@ -2,6 +2,7 @@ package edu.edo.torabentoapps.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static edu.edo.torabentoapps.R.id.daftarreseller;
 
 /**
@@ -89,6 +91,9 @@ public class AkunFragment extends Fragment {
                 if (response.isSuccessful()){
                     if (response.body().getNilai().equals(1)){
                         pd.dismiss();
+                        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Nama Reseller",MODE_PRIVATE).edit();
+                        editor.putString("namareseller", response.body().getDataArray().get(0).getNamaReseller());
+                        editor.apply();
                         //Toast.makeText(getActivity(), "Welcome "+getUsername(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), loginreseller.class));
                         getActivity().finish();

@@ -3,6 +3,7 @@ package edu.edo.torabentoapps;
 import android.app.ProgressDialog;
 import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -196,13 +197,16 @@ public class dashboardreseller extends AppCompatActivity {
     public void insertDataMakanan(){
         if (filePath != null) {
             imageUpload(filePath);
+            SharedPreferences prefs = getSharedPreferences("Nama Reseller", MODE_PRIVATE);
+            String namareseller = prefs.getString("namareseller", null);
             SampleAPI tambah = SampleAPI.Factory.getIstance(this);
-            tambah.insertMakanan(getNamaMakanan(),getStok(),getHarga(),getStatus(),urlGambar+namagambar).enqueue(new Callback<itemRespon>() {
+            tambah.insertMakanan(namareseller,getNamaMakanan(),getStok(),getHarga(),getStatus(),urlGambar+namagambar).enqueue(new Callback<itemRespon>() {
                 @Override
                 public void onResponse(Call<itemRespon> call, Response<itemRespon> response) {
                     if(response.isSuccessful()){
                         pd.dismiss();
                         Toast.makeText(dashboardreseller.this, "Berhasil menambah "+getNamaMakanan(), Toast.LENGTH_SHORT).show();
+                        finish();
                     }else{
                         pd.dismiss();
                         Toast.makeText(dashboardreseller.this, "unSuccessfully : "+response.errorBody(), Toast.LENGTH_SHORT).show();
