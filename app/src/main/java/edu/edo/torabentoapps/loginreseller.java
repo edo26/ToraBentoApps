@@ -24,6 +24,7 @@ public class loginreseller extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbardaftar);
         setSupportActionBar(toolbar);
         setTitle("Reseller Dashboard");
+
         buttonTambah = (BootstrapButton)findViewById(R.id.tomboltambah);
         buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override

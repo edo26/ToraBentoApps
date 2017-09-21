@@ -54,7 +54,8 @@ public interface SampleAPI {
   Call<itemRespon> insertMakanan(@Field("nama_makanan") String namamakanan,
                                  @Field("stok") String stok,
                                  @Field("harga") String harga,
-                                 @Field("status") String status);
+                                 @Field("status") String status,
+                                 @Field("gambar") String gambar);
 
 
   class Factory {
