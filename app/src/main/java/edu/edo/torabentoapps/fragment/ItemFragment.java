@@ -62,7 +62,7 @@ public class ItemFragment extends Fragment {
                     imMakanan = response.body().getLiModel();
                     mAdapter = new gridItemAdapter(imMakanan,getContext());
                     mRecyler.setAdapter(mAdapter);
-                    ((MainActivity)getActivity()).pd.dismiss();
+                 //   ((MainActivity)getActivity()).pd.dismiss();
                     ((MainActivity)getActivity()).pd.cancel();
                 } else {
                     ((MainActivity)getActivity()).pd.dismiss();
