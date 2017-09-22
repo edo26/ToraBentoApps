@@ -98,29 +98,33 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                     }
                 });
                 alertDialog.show();*/
-                boolean wrapScroll = true;
-                MaterialDialog mDialog = new MaterialDialog.Builder(v.getContext())
-                        .customView(R.layout.dialog_layout,wrapScroll)
-                        .title("Title")
-                        .neutralText("BELI")
-                        .buttonsGravity(GravityEnum.CENTER)
-                        .onNeutral(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                //masuk ke transaksi fragment dengan item yang dipilih
-                            }
-                        })
-                        .build();
-                TextView makanan = (TextView) mDialog.findViewById(R.id.makananBeli);
-                TextView hargabeli = (TextView) mDialog.findViewById(R.id.hargabeli);
-                TextView stoktersedia = (TextView) mDialog.findViewById(R.id.stokdialog);
-                ImageView gambardialog = (ImageView) mDialog.findViewById(R.id.gambarBeli);
-                Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(gambardialog);
-                hargabeli.setText(iModel.getHarga());
-                makanan.setText(iModel.getNmMakanan());
-                stoktersedia.setText(""+iModel.getStok());
-                mDialog.show();
+                if (iModel.getKetersediaan().equals("Tidak Tersedia")){
+                    Toast.makeText(v.getContext(),iModel.getNmMakanan()+" TIDAK TERSEDIA", Toast.LENGTH_LONG).show();
+                }else{
+                    boolean wrapScroll = true;
+                    MaterialDialog mDialog = new MaterialDialog.Builder(v.getContext())
+                            .customView(R.layout.dialog_layout,wrapScroll)
+                            .title("Title")
+                            .neutralText("BELI")
+                            .buttonsGravity(GravityEnum.CENTER)
+                            .onNeutral(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    //masuk ke transaksi fragment dengan item yang dipilih
+                                }
+                            })
+                            .build();
+                    TextView makanan = (TextView) mDialog.findViewById(R.id.makananBeli);
+                    TextView hargabeli = (TextView) mDialog.findViewById(R.id.hargabeli);
+                    TextView stoktersedia = (TextView) mDialog.findViewById(R.id.stokdialog);
+                    ImageView gambardialog = (ImageView) mDialog.findViewById(R.id.gambarBeli);
+                    Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(gambardialog);
+                    hargabeli.setText(iModel.getHarga());
+                    makanan.setText(iModel.getNmMakanan());
+                    stoktersedia.setText(""+iModel.getStok());
+                    mDialog.show();
 
+                }
             }
         });
     }
