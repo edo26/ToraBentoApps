@@ -25,7 +25,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
+import com.squareup.picasso.Picasso;
 import edu.edo.torabentoapps.Model.itemModel;
 import edu.edo.torabentoapps.R;
 import edu.edo.torabentoapps.daftarreseller;
@@ -42,9 +42,10 @@ import retrofit2.Response;
 
 public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHolder>{
     private List<itemModel> mMakanan;
-
-    public gridItemAdapter(List<itemModel> mMakanan){
+    private Context konteks;
+    public gridItemAdapter(List<itemModel> mMakanan, Context konteks){
         this.mMakanan = mMakanan;
+        this.konteks = konteks;
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup viewgroup, int i){
@@ -61,7 +62,8 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         final itemModel iModel = mMakanan.get(i);
         NumberFormat nf = NumberFormat.getCurrencyInstance(local);
         viewHolder.nmMakanan.setText(iModel.getNmMakanan());
-        viewHolder.gambar.setImageResource(iModel.getThumbnail());
+        Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(viewHolder.gambar);
+        //viewHolder.gambar.setImageResource(iModel.getThumbnail());
         viewHolder.status.setText(iModel.getKetersediaan());
         viewHolder.harga.setText(nf.format(Double.valueOf(iModel.getHarga())));
         viewHolder.stok.setText("Stok : "+iModel.getStok());
