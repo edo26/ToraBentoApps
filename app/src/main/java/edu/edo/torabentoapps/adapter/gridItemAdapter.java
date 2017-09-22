@@ -1,11 +1,14 @@
 package edu.edo.torabentoapps.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.Image;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -60,7 +63,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
 
     public void onBindViewHolder(ViewHolder viewHolder, int i){
         //gambil data
-        Locale local = new Locale("in","ID");
+        final Locale local = new Locale("in","ID");
         final itemModel iModel = mMakanan.get(i);
         NumberFormat nf = NumberFormat.getCurrencyInstance(local);
         viewHolder.nmMakanan.setText(iModel.getNmMakanan());
@@ -74,7 +77,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         viewHolder.stok.setText("Stok : "+iModel.getStok());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                // Toast.makeText(v.getContext(),iModel.getNmMakanan(), Toast.LENGTH_LONG).show();
                 //masukkan dialog disini
                 /*final Dialog dialog = new Dialog(v.getContext());
@@ -111,6 +114,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                     //masuk ke transaksi fragment dengan item yang dipilih
+
                                 }
                             })
                             .build();
@@ -119,7 +123,8 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                     TextView stoktersedia = (TextView) mDialog.findViewById(R.id.stokdialog);
                     ImageView gambardialog = (ImageView) mDialog.findViewById(R.id.gambarBeli);
                     Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(gambardialog);
-                    hargabeli.setText(iModel.getHarga());
+                    NumberFormat nf = NumberFormat.getCurrencyInstance(local);
+                    hargabeli.setText(nf.format(Double.valueOf(iModel.getHarga())));
                     makanan.setText(iModel.getNmMakanan());
                     stoktersedia.setText(""+iModel.getStok());
                     mDialog.show();

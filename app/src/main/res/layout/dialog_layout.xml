@@ -11,6 +11,7 @@
         android:scaleType="fitXY"/>
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/makananBeli"
         android:text="Tes"
         android:gravity="center"
@@ -29,11 +30,12 @@
         android:layout_marginTop="6dp"
         android:layout_marginBottom="6dp" />
     <TextView
+        android:textSize="20sp"
         android:layout_marginLeft="6dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="6dp"
         android:id="@+id/hargabeli"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/labelharga"
         android:layout_below="@+id/makananBeli"/>
@@ -46,6 +48,7 @@
         android:text="Stok "
         android:textSize="20sp"/>
     <TextView
+        android:textSize="20sp"
         android:layout_margin="6dp"
         android:id="@+id/stokdialog"
         android:layout_width="wrap_content"
