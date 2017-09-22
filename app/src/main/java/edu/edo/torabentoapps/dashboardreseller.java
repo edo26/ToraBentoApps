@@ -1,20 +1,9 @@
 package edu.edo.torabentoapps;
 
-import android.app.ProgressDialog;
-import android.content.CursorLoader;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,14 +11,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.error.VolleyError;
-import com.android.volley.request.SimpleMultiPartRequest;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import edu.edo.torabentoapps.Model.itemRespon;
 import edu.edo.torabentoapps.utilitize.SampleAPI;
@@ -48,10 +31,7 @@ public class dashboardreseller extends AppCompatActivity {
     RadioButton tersedia,tdktersedia;
     ImageView thumbnails;
     BootstrapButton tambah,edit;
-    String filePath,targetpath,namagambar,urlGambar="https://kptoratorabento.000webhostapp.com/AndroidUploadImage/uploads/";
-    private Bitmap oldDrawable;
-    public static String BASE_URL = "https://kptoratorabento.000webhostapp.com/AndroidUploadImage/upload.php";
-    ProgressDialog pd;
+    String status="";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,165 +44,39 @@ public class dashboardreseller extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Tambah Makanan");
         bindingData();
-        pd = new ProgressDialog(this);
-        pd.setTitle("Pesan");
-        pd.setMessage("Sedang menambahkan...");
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pd.show();
                 validasiData();
             }
         });
-        thumbnails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageBrowse();
-            }
-        });
     }
-
-    private void imageBrowse() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        // Start the Intent
-        startActivityForResult(galleryIntent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-
-            if(requestCode == 1){
-                Uri picUri = data.getData();
-
-                filePath = getPath(picUri);
-
-                namagambar = getFileName(picUri);
-
-                thumbnails.setImageURI(picUri);
-
-            }
-
-        }
-
-    }
-
-    public String getFileName(Uri uri) {
-        String result = null;
-        if (uri.getScheme().equals("content")) {
-            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-            try {
-                if (cursor != null && cursor.moveToFirst()) {
-                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                }
-            } finally {
-                cursor.close();
-            }
-        }
-        if (result == null) {
-            result = uri.getPath();
-            int cut = result.lastIndexOf('/');
-            if (cut != -1) {
-                result = result.substring(cut + 1);
-            }
-        }
-        return result;
-    }
-
-    // Get Path of selected image
-    private String getPath(Uri contentUri) {
-        String[] proj = { MediaStore.Images.Media.DATA };
-        CursorLoader loader = new CursorLoader(getApplicationContext(),    contentUri, proj, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String result = cursor.getString(column_index);
-        cursor.close();
-        return result;
-    }
-
-
 
     private void validasiData(){
-        oldDrawable = ((BitmapDrawable) thumbnails.getDrawable()).getBitmap();
-        if(getNamaMakanan().equals("") || getStok().equals("") || getHarga().equals("") || !tersedia.isChecked() && !tdktersedia.isChecked() || oldDrawable != oldDrawable){
-            pd.dismiss();
+        if(getNamaMakanan().equals("") || getStok().equals("") || getHarga().equals("") || !tersedia.isChecked() && !tdktersedia.isChecked()){
             Toast.makeText(this, "Lengkapi dulu data makanan nya.", Toast.LENGTH_SHORT).show();
         }else{
             insertDataMakanan();
         }
     }
 
-    private void imageUpload(final String imagePath) {
-        ProgressDialog baru = new ProgressDialog(this);
-        baru.setTitle("Upload");
-        baru.setMessage("Sedang melakukan upload gambar...");
-        baru.show();
-        SimpleMultiPartRequest smr = new SimpleMultiPartRequest(Request.Method.POST, BASE_URL,
-                new com.android.volley.Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("Response", response);
-                        try {
-                            JSONObject jObj = new JSONObject(response);
-
-                            String message = jObj.getString("message");
-
-                            targetpath = jObj.getString("target");
-
-                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                            //Toast.makeText(dashboardreseller.this, targetpath, Toast.LENGTH_SHORT).show();
-                            Log.d("Target",targetpath);
-
-                        } catch (JSONException e) {
-                            // JSON error
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new com.android.volley.Response.ErrorListener() {
+    private void insertDataMakanan(){
+        SampleAPI tambah = SampleAPI.Factory.getIstance(this);
+        tambah.insertMakanan(getNamaMakanan(),getStok(),getHarga(),getStatus()).enqueue(new Callback<itemRespon>() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            public void onResponse(Call<itemRespon> call, Response<itemRespon> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(dashboardreseller.this, "Berhasil menambah "+getNamaMakanan(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(dashboardreseller.this, "unSuccessfully : "+response.errorBody(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<itemRespon> call, Throwable t) {
+                Toast.makeText(dashboardreseller.this, "onFailure : "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        smr.addFile("image", imagePath);
-        MyApplication.getInstance().addToRequestQueue(smr);
-        baru.dismiss();
-    }
-
-    public void insertDataMakanan(){
-        if (filePath != null) {
-            imageUpload(filePath);
-            SharedPreferences prefs = getSharedPreferences("Nama Reseller", MODE_PRIVATE);
-            String namareseller = prefs.getString("namareseller", null);
-            SampleAPI tambah = SampleAPI.Factory.getIstance(this);
-            tambah.insertMakanan(namareseller,getNamaMakanan(),getStok(),getHarga(),getStatus(),urlGambar+namagambar).enqueue(new Callback<itemRespon>() {
-                @Override
-                public void onResponse(Call<itemRespon> call, Response<itemRespon> response) {
-                    if(response.isSuccessful()){
-                        pd.dismiss();
-                        Toast.makeText(dashboardreseller.this, "Berhasil menambah "+getNamaMakanan(), Toast.LENGTH_SHORT).show();
-                        finish();
-                    }else{
-                        pd.dismiss();
-                        Toast.makeText(dashboardreseller.this, "unSuccessfully : "+response.errorBody(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<itemRespon> call, Throwable t) {
-                    pd.dismiss();
-                    Toast.makeText(dashboardreseller.this, "onFailure : "+t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            pd.dismiss();
-            Toast.makeText(getApplicationContext(), "Image not selected!", Toast.LENGTH_LONG).show();
-        }
     }
 
     private void bindingData(){
@@ -251,15 +105,21 @@ public class dashboardreseller extends AppCompatActivity {
 
     public String getStatus(){
 
-        String status;
-
         rg = (RadioGroup) findViewById(R.id.radiogrupIni);
 
-        if(tersedia.isChecked()){
-            status = "Tersedia";
-        }else{
-            status = "Tidak Tersedia";
-        }
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                if(checkedId == R.id.tersedia) {
+                    status = "Tersedia";
+                }else {
+                    status = "Tidak Tersedia";
+                }
+            }
+
+        });
 
         return status;
     }

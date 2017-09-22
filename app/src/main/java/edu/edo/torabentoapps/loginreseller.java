@@ -15,7 +15,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 public class loginreseller extends AppCompatActivity {
 
-    BootstrapButton buttonTambah,buttonLogout;
+    BootstrapButton buttonTambah;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,24 +24,12 @@ public class loginreseller extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbardaftar);
         setSupportActionBar(toolbar);
         setTitle("Reseller Dashboard");
-
         buttonTambah = (BootstrapButton)findViewById(R.id.tomboltambah);
-        buttonLogout = (BootstrapButton)findViewById(R.id.tombollogout);
-
         buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(loginreseller.this,dashboardreseller.class));
             }
         });
-
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(loginreseller.this, MainActivity.class));
-                finish();
-            }
-        });
-
     }
 }

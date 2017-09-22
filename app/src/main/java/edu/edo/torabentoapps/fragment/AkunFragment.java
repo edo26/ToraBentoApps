@@ -91,6 +91,7 @@ public class AkunFragment extends Fragment {
                 if (response.isSuccessful()){
                     if (response.body().getNilai().equals(1)){
                         pd.dismiss();
+                        pd.dismiss();
                         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Nama Reseller",MODE_PRIVATE).edit();
                         editor.putString("namareseller", response.body().getDataArray().get(0).getNamaReseller());
                         editor.apply();

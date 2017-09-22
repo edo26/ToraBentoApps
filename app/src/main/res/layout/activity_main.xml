@@ -31,7 +31,7 @@
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottombar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
         app:bb_tabXmlResource="@xml/bottom_bar"
         android:background="@color/PinkTora"
         app:bb_inActiveTabAlpha="1.9"

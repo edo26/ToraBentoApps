@@ -51,12 +51,10 @@ public interface SampleAPI {
 
   @FormUrlEncoded
   @POST("json_t_makanan.php?operasi=insert")
-  Call<itemRespon> insertMakanan(@Field("nama_reseller") String namareseller,
-                                 @Field("nama_makanan") String namamakanan,
+  Call<itemRespon> insertMakanan(@Field("nama_makanan") String namamakanan,
                                  @Field("stok") String stok,
                                  @Field("harga") String harga,
-                                 @Field("status") String status,
-                                 @Field("gambar") String gambar);
+                                 @Field("status") String status);
 
 
   class Factory {

@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         bottomBar = (BottomBar) findViewById(R.id.bottombar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             Fragment fragment = null;
