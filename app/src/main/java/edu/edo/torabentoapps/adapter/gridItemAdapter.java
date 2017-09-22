@@ -2,6 +2,7 @@ package edu.edo.torabentoapps.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -65,6 +66,9 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         viewHolder.nmMakanan.setText(iModel.getNmMakanan());
         Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(viewHolder.gambar);
         //viewHolder.gambar.setImageResource(iModel.getThumbnail());
+        if (iModel.getKetersediaan().equals("Tidak Tersedia")){
+            viewHolder.status.setTextColor(Color.RED);
+        }
         viewHolder.status.setText(iModel.getKetersediaan());
         viewHolder.harga.setText(nf.format(Double.valueOf(iModel.getHarga())));
         viewHolder.stok.setText("Stok : "+iModel.getStok());
