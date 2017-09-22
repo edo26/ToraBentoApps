@@ -115,6 +115,9 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                     //masuk ke transaksi fragment dengan item yang dipilih
                                     //tess
+                                    Activity activity = (Activity) v.getContext();
+                                    android.app.FragmentManager fragmentManager = activity.getFragmentManager();
+
                                 }
                             })
                             .build();
