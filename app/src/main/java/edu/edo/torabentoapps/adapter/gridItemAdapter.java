@@ -2,6 +2,7 @@ package edu.edo.torabentoapps.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.media.MediaMetadataCompat;
@@ -108,10 +109,12 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                         .build();
                 TextView makanan = (TextView) mDialog.findViewById(R.id.makananBeli);
                 TextView hargabeli = (TextView) mDialog.findViewById(R.id.hargabeli);
-                TextView stoktersedia = (TextView) mDialog.findViewById(R.id.stokterserdia);
-                stoktersedia.setText(iModel.getStok());
+                TextView stoktersedia = (TextView) mDialog.findViewById(R.id.stokdialog);
+                ImageView gambardialog = (ImageView) mDialog.findViewById(R.id.gambarBeli);
+                Picasso.with(konteks).load(iModel.getGambar()).placeholder(R.drawable.noimage).fit().into(gambardialog);
                 hargabeli.setText(iModel.getHarga());
                 makanan.setText(iModel.getNmMakanan());
+                stoktersedia.setText(""+iModel.getStok());
                 mDialog.show();
 
             }

@@ -20,7 +20,7 @@
         android:layout_below="@+id/gambarBeli"/>
     <TextView
         android:id="@+id/labelharga"
-        android:text="Harga : "
+        android:text="Harga "
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,12 +43,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/labelharga"
-        android:text="Stok : "
+        android:text="Stok "
         android:textSize="20sp"/>
     <TextView
         android:layout_margin="6dp"
-        android:id="@+id/stokterserdia"
-        android:layout_width="match_parent"
+        android:id="@+id/stokdialog"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/labelharga"
         android:layout_below="@+id/labelharga"/>
