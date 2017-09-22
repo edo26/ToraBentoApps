@@ -114,7 +114,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                     //masuk ke transaksi fragment dengan item yang dipilih
-
+                                    //tess
                                 }
                             })
                             .build();
