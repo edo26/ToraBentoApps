@@ -28,7 +28,7 @@ public class transaksiItemAdapter extends RecyclerView.Adapter<transaksiItemAdap
         data = new ArrayList<transaksiModel>();
         transaksiModel item = new transaksiModel();
         item.setTransaksiID("#ID91283123");
-        item.setNamamakanan("Shrimp roll");
+        item.setNamamakanan("makanan");
         item.setTanggal_transaksi("2017-08-12");
         item.setStatuspemesanan("Diterima");
         item.setAlamat("Jln. pasir putih");

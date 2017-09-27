@@ -6,9 +6,12 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.Image;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,8 +34,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.BottomBarTab;
 import com.squareup.picasso.Picasso;
 import edu.edo.torabentoapps.Model.itemModel;
+import edu.edo.torabentoapps.Model.transaksiModel;
 import edu.edo.torabentoapps.R;
 import edu.edo.torabentoapps.daftarreseller;
 import edu.edo.torabentoapps.fragment.ItemFragment;
@@ -48,6 +56,7 @@ import retrofit2.Response;
 public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHolder>{
     private List<itemModel> mMakanan;
     private Context konteks;
+    public BottomBar bottomBar;
     public gridItemAdapter(List<itemModel> mMakanan, Context konteks){
         this.mMakanan = mMakanan;
         this.konteks = konteks;
@@ -61,7 +70,7 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
         return viewholder;
     }
 
-    public void onBindViewHolder(ViewHolder viewHolder, int i){
+    public void onBindViewHolder(final ViewHolder viewHolder, int i){
         //gambil data
         final Locale local = new Locale("in","ID");
         final itemModel iModel = mMakanan.get(i);
@@ -115,6 +124,18 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                                     //masuk ke transaksi fragment dengan item yang dipilih
                                     //tess
+                                    TransaksiFragment frag = new TransaksiFragment ();
+                                    FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+                                    FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
+                                    fragmentTransaction.replace(R.id.content, frag);
+                                    fragmentTransaction.commit();
+                                   // List<transaksiModel> lt = new ArrayList<transaksiModel>();
+
+                                    bottomBar = (BottomBar)((Activity) v.getContext()).findViewById(R.id.bottombar);
+                                    bottomBar.selectTabAtPosition(1);
+
+
+
                                 }
                             })
                             .build();
