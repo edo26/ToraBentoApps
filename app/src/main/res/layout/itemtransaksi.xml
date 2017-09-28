@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -124,21 +125,21 @@
                 android:orientation="horizontal"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="Status Pemesanan : "
-                    android:textColor="@color/Black"
-                    />
-
-                <TextView
-                    android:id="@+id/statuspemesanan"
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/hapustransaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Diterima"
-                    android:textColor="@color/Green"
+                    android:padding="16dp"
+                    app:bootstrapBrand="danger"
+                    android:textColor="@color/Black"
+                    android:layout_margin="15dp"
+                    app:bootstrapSize="lg"
+                    app:buttonMode="regular"
+                    app:showOutline="false"
+                    app:roundedCorners="true"
+                    android:text="HAPUS"
                     />
+
 
             </LinearLayout>
 

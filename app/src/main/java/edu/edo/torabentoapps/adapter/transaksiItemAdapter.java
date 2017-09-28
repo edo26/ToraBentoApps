@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class transaksiItemAdapter extends RecyclerView.Adapter<transaksiItemAdap
         item.setTransaksiID("#ID91283123");
         item.setNamamakanan("makanan");
         item.setTanggal_transaksi("2017-08-12");
-        item.setStatuspemesanan("Diterima");
+        //item.setStatuspemesanan("Diterima");
         item.setAlamat("Jln. pasir putih");
         item.setQuantity(3);
         item.setThumbnails(R.drawable.shrimproll);
@@ -58,7 +60,8 @@ public class transaksiItemAdapter extends RecyclerView.Adapter<transaksiItemAdap
         holder.thumbnailsItem.setImageResource(item.getThumbnails());
         holder.totalharga.setText("Rp. "+item.getTotalharga());
         holder.alamatkirim.setText(item.getAlamat());
-        holder.status.setText(item.getStatuspemesanan());
+        //holder.hapus.setFontAwesomeIcon("fa_trash");
+        //holder.status.setText(item.getStatuspemesanan());
         holder.timestamp.setText(item.getTanggal_transaksi());
 
     }
@@ -72,6 +75,7 @@ public class transaksiItemAdapter extends RecyclerView.Adapter<transaksiItemAdap
         public TextView transaksiID,namamakanan,quantityItem,timestamp,status,totalharga,alamatkirim;
         public ImageView thumbnailsItem;
         public CardView cardViewTransaksi;
+        public BootstrapButton hapus;
 
         public holderTransaksi(View itemView) {
             super(itemView);
@@ -79,7 +83,8 @@ public class transaksiItemAdapter extends RecyclerView.Adapter<transaksiItemAdap
             namamakanan = (TextView)itemView.findViewById(R.id.namamakanan);
             quantityItem = (TextView)itemView.findViewById(R.id.quantityitem);
             timestamp = (TextView)itemView.findViewById(R.id.timestamp);
-            status = (TextView)itemView.findViewById(R.id.statuspemesanan);
+            //status = (TextView)itemView.findViewById(R.id.statuspemesanan);
+            hapus = (BootstrapButton)itemView.findViewById(R.id.hapustransaksi);
             totalharga = (TextView)itemView.findViewById(R.id.totalharga);
             alamatkirim = (TextView)itemView.findViewById(R.id.alamatkirim);
             thumbnailsItem = (ImageView)itemView.findViewById(R.id.thumbnailsitem);

@@ -93,7 +93,7 @@ public class AkunFragment extends Fragment {
                         pd.dismiss();
                         pd.dismiss();
                         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Nama Reseller",MODE_PRIVATE).edit();
-                        editor.putString("namareseller", response.body().getDataArray().get(0).getNamaReseller());
+                        editor.putString("namareseller", response.body().getDataArray().get(0).getIdReseller());
                         editor.apply();
                         //Toast.makeText(getActivity(), "Welcome "+getUsername(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), loginreseller.class));

@@ -61,9 +61,15 @@ public class ItemFragment extends Fragment {
                     //Toast.makeText(getActivity(), "onSuccessfully Response", Toast.LENGTH_SHORT).show();
                     imMakanan = response.body().getLiModel();
                     mAdapter = new gridItemAdapter(imMakanan,getContext());
-                    mRecyler.setAdapter(mAdapter);
-                 //   ((MainActivity)getActivity()).pd.dismiss();
-                    ((MainActivity)getActivity()).pd.cancel();
+                    if(mAdapter.getItemCount() == 0){
+                        ((MainActivity)getActivity()).pd.dismiss();
+                        Toast.makeText(getActivity(), "List Kosong", Toast.LENGTH_SHORT).show();
+                    }else{
+                        ((MainActivity)getActivity()).pd.dismiss();
+                        mRecyler.setAdapter(mAdapter);
+                        //   ((MainActivity)getActivity()).pd.dismiss();
+//                    ((MainActivity)getActivity()).pd.cancel();
+                    }
                 } else {
                     ((MainActivity)getActivity()).pd.dismiss();
                     Toast.makeText(getActivity(), "Error " + response.errorBody(), Toast.LENGTH_SHORT).show();

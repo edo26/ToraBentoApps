@@ -1,0 +1,118 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            android:id="@+id/appBarLayout">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbardaftar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/PinkTora"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kemana pesananmu akan dikirimkan?"
+                android:gravity="center"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/namapembeli"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Nama Lengkap"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:textSize="13sp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/nomorhppembeli"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Nomor handphone"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:inputType="phone"
+                android:textSize="13sp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/emailpembeli"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Email"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:inputType="textEmailAddress"
+                android:textSize="13sp"
+                />
+
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/alamatpembeli"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Alamat"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:inputType="textLongMessage"
+                android:textSize="13sp"
+                android:layout_gravity="start"
+                android:gravity="top"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/bayar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:roundedCorners="true"
+                app:bootstrapBrand="danger"
+                android:text="BAYAR"
+                app:bootstrapSize="lg"
+                app:buttonMode="regular"
+                app:showOutline="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

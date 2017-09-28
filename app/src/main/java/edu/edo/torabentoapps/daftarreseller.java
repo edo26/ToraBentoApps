@@ -68,8 +68,8 @@ public class daftarreseller extends AppCompatActivity {
                 //Toast.makeText(daftarreseller.this, "Berhasil ?", Toast.LENGTH_SHORT).show();
                 if(response.isSuccessful()){
                     BackgroundMail.newBuilder(daftarreseller.this)
-                            .withUsername("rhydhohcker@gmail.com")
-                            .withPassword("miftahurido260896")
+                            .withUsername("kptoratorabento@gmail.com")
+                            .withPassword("toratorabento")
                             .withMailto(email.getText().toString())
                             .withType(BackgroundMail.TYPE_PLAIN)
                             .withSubject("KONFIRMASI EMAIL TORA - TORA BENTO")

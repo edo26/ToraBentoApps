@@ -116,9 +116,16 @@ public class gridItemAdapter extends RecyclerView.Adapter<gridItemAdapter.ViewHo
                     boolean wrapScroll = true;
                     MaterialDialog mDialog = new MaterialDialog.Builder(v.getContext())
                             .customView(R.layout.dialog_layout,wrapScroll)
-                            .title("Title")
+                            .title("PESANAN")
                             .neutralText("BELI")
+                            .negativeText("BATAL")
                             .buttonsGravity(GravityEnum.CENTER)
+                            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    dialog.dismiss();
+                                }
+                            })
                             .onNeutral(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
