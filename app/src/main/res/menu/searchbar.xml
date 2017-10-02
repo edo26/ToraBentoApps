@@ -7,4 +7,12 @@
         android:orderInCategory="100"
         android:title="@string/abc_search_hint"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/historitransaksi"
+        android:icon="@drawable/emoji_164"
+        android:orderInCategory="100"
+        android:title="@string/abc_search_hint"
+        app:showAsAction="always" />
+
 </menu>

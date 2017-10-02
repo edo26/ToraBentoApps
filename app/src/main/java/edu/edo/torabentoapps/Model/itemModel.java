@@ -10,37 +10,58 @@ import java.util.List;
  */
 
 public class itemModel {
+    @SerializedName("id_makanan")
+    @Expose
+    private String idMakanan;
+    @SerializedName("id_reseller")
+    @Expose
+    private String idReseller;
     @SerializedName("nama_makanan")
     @Expose
-    private String nmMakanan;
+    private String namaMakanan;
+    @SerializedName("stok")
+    @Expose
+    private String stok;
     @SerializedName("harga")
     @Expose
     private String harga;
     @SerializedName("status")
     @Expose
-    private String ketersediaan;
-    @SerializedName("stok")
-    @Expose
-    private int stok;
-
-    public int getStok() {
-        return stok;
-    }
-
-    public void setStok(int stok) {
-        this.stok = stok;
-    }
-
+    private String status;
     @SerializedName("gambar")
     @Expose
     private String gambar;
 
-    public String getNmMakanan() {
-        return nmMakanan;
+    public String getIdMakanan() {
+        return idMakanan;
     }
 
-    public void setNmMakanan(String nmMakanan) {
-        this.nmMakanan = nmMakanan;
+    public void setIdMakanan(String idMakanan) {
+        this.idMakanan = idMakanan;
+    }
+
+    public String getIdReseller() {
+        return idReseller;
+    }
+
+    public void setIdReseller(String idReseller) {
+        this.idReseller = idReseller;
+    }
+
+    public String getNmMakanan() {
+        return namaMakanan;
+    }
+
+    public void setNamaMakanan(String namaMakanan) {
+        this.namaMakanan = namaMakanan;
+    }
+
+    public String getStok() {
+        return stok;
+    }
+
+    public void setStok(String stok) {
+        this.stok = stok;
     }
 
     public String getHarga() {
@@ -52,11 +73,11 @@ public class itemModel {
     }
 
     public String getKetersediaan() {
-        return ketersediaan;
+        return status;
     }
 
-    public void setKetersediaan(String ketersediaan) {
-        this.ketersediaan = ketersediaan;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getGambar() {
@@ -66,4 +87,5 @@ public class itemModel {
     public void setGambar(String gambar) {
         this.gambar = gambar;
     }
+
 }

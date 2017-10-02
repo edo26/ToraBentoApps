@@ -11,7 +11,6 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
-import edu.edo.torabentoapps.Model.DataArray;
 import edu.edo.torabentoapps.Model.ResellerModel;
 import edu.edo.torabentoapps.utilitize.SampleAPI;
 import retrofit2.Call;

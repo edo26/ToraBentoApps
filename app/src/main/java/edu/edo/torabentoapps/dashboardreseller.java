@@ -2,6 +2,7 @@ package edu.edo.torabentoapps;
 
 import android.app.ProgressDialog;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -12,7 +13,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,11 +25,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.Request;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.SimpleMultiPartRequest;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,22 +69,54 @@ public class dashboardreseller extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Tambah Makanan");
         bindingData();
+        
         pd = new ProgressDialog(this);
         pd.setTitle("Pesan");
         pd.setMessage("Sedang menambahkan...");
-        tambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pd.show();
-                validasiData();
-            }
-        });
+
+        Intent i = getIntent();
+        String telahDiklik = i.getStringExtra("ModeTambah");
+
+        if(telahDiklik != null){
+            //Toast.makeText(this, "Telah diklik", Toast.LENGTH_SHORT).show();
+            clearAll();
+            tambah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    pd.show();
+                    validasiData();
+                    clearAll();
+                }
+            });
+        }else{
+            //Toast.makeText(this, "Tidak diklik", Toast.LENGTH_SHORT).show();
+            pd.setMessage("Sedang mengupdate...");
+            editMode();
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    pd.show();
+                    validasiData2();
+                }
+            });
+        }
+
         thumbnails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imageBrowse();
             }
         });
+    }
+
+    private void clearAll(){
+
+        namaMakanan.setText("");
+        stok.setText("");
+        harga.setText("");
+        rg.clearCheck();
+        thumbnails.setImageResource(R.drawable.noimage);
+
     }
 
     private void imageBrowse() {
@@ -155,6 +192,58 @@ public class dashboardreseller extends AppCompatActivity {
         }
     }
 
+    private void validasiData2(){
+        oldDrawable = ((BitmapDrawable) thumbnails.getDrawable()).getBitmap();
+        if(getNamaMakanan().equals("") || getStok().equals("") || getHarga().equals("") || !tersedia.isChecked() && !tdktersedia.isChecked() || oldDrawable != oldDrawable){
+            pd.dismiss();
+            Toast.makeText(this, "Lengkapi dulu data makanan nya.", Toast.LENGTH_SHORT).show();
+        }else{
+            editMakanan();
+        }
+    }
+
+    private void editMakanan() {
+        if (filePath != null) {
+            imageUpload(filePath);
+            SampleAPI update = SampleAPI.Factory.getIstance(this);
+            SharedPreferences editor = getSharedPreferences("Nama Reseller",MODE_PRIVATE);
+            String id_reseller = editor.getString("namareseller",null);
+            String idmakanan = editor.getString("idmakanan",null);
+            update.updateMakanan(id_reseller,idmakanan,getNamaMakanan(),getStok(),getHarga(),getStatus(),urlGambar+namagambar).enqueue(new Callback<itemRespon>() {
+                @Override
+                public void onResponse(Call<itemRespon> call, Response<itemRespon> response) {
+                    if(response.isSuccessful()){
+                        pd.dismiss();
+                        Toast.makeText(dashboardreseller.this, "Berhasil Memperbararui "+getNamaMakanan(), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        pd.dismiss();
+                        Toast.makeText(dashboardreseller.this, "unSuccessfully : "+response.errorBody(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<itemRespon> call, Throwable t) {
+                    pd.dismiss();
+                    Toast.makeText(dashboardreseller.this, "onFailure : "+t.getMessage(), Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(dashboardreseller.this);
+                    alertDialog.setTitle("PESAN")
+                            .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .show();
+                }
+            });
+        } else {
+            pd.dismiss();
+            Toast.makeText(getApplicationContext(), "Image not selected!", Toast.LENGTH_LONG).show();
+        }
+    }
+
     private void imageUpload(final String imagePath) {
         ProgressDialog baru = new ProgressDialog(this);
         baru.setTitle("Upload");
@@ -216,6 +305,16 @@ public class dashboardreseller extends AppCompatActivity {
                 public void onFailure(Call<itemRespon> call, Throwable t) {
                     pd.dismiss();
                     Toast.makeText(dashboardreseller.this, "onFailure : "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(dashboardreseller.this);
+                    alertDialog.setTitle("PESAN")
+                            .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .show();
                 }
             });
         } else {
@@ -261,6 +360,33 @@ public class dashboardreseller extends AppCompatActivity {
         }
 
         return status;
+    }
+
+    private void editMode(){
+
+        setTitle("Edit Makanan");
+        Intent intent = getIntent();
+        if(intent != null){
+            String namamakanan = intent.getStringExtra("namamakanan");
+            String stokk = intent.getStringExtra("stok");
+            String baru = stokk.replace("Stok :","");
+            String hargaa = intent.getStringExtra("harga");
+            String baru2 = hargaa.replace("Rp.","");
+            String status = intent.getStringExtra("status");
+            String gambar = intent.getStringExtra("gambar");
+
+            namaMakanan.setText(namamakanan);
+            stok.setText(baru);
+            harga.setText(baru2);
+            if(status.equals("Tersedia")){
+                rg.check(R.id.tersedia);
+            }else{
+                rg.check(R.id.tidaktersedia);
+            }
+            Picasso.with(this).load(gambar).placeholder(R.drawable.noimage).fit().into(thumbnails);
+            tambah.setEnabled(false);
+        }
+
     }
 
     @Override

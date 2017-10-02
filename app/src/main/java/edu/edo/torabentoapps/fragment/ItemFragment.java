@@ -1,8 +1,8 @@
 package edu.edo.torabentoapps.fragment;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.edo.torabentoapps.MainActivity;
+import edu.edo.torabentoapps.Model.DataArray;
 import edu.edo.torabentoapps.Model.itemModel;
 import edu.edo.torabentoapps.Model.itemRespon;
 import edu.edo.torabentoapps.R;
@@ -27,7 +28,7 @@ public class ItemFragment extends Fragment {
     RecyclerView mRecyler;
     RecyclerView.LayoutManager mLayout;
     RecyclerView.Adapter mAdapter;
-    MainActivity main = new MainActivity();
+    //MainActivity main = new MainActivity();
     private List<itemModel> imMakanan = new ArrayList<>();
     //public boolean tesDulu = false;
 
@@ -73,6 +74,10 @@ public class ItemFragment extends Fragment {
                 } else {
                     ((MainActivity)getActivity()).pd.dismiss();
                     Toast.makeText(getActivity(), "Error " + response.errorBody(), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                    alertDialog.setTitle("PESAN")
+                            .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                            .show();
                 }
             }
 
@@ -81,6 +86,10 @@ public class ItemFragment extends Fragment {
                 //Log.d("Error",t.getMessage());
                 ((MainActivity)getActivity()).pd.dismiss();
                 Toast.makeText(getActivity(), "onFailure : " + t.getMessage(), Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("PESAN")
+                        .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                        .show();
             }
         });
 

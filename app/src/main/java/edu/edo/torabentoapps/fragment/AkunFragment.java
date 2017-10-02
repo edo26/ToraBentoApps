@@ -1,11 +1,13 @@
 package edu.edo.torabentoapps.fragment;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +16,8 @@ import android.widget.Toast;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 
-import java.util.zip.Inflater;
-
 import edu.edo.torabentoapps.Model.ResellerModel;
 import edu.edo.torabentoapps.R;
-import edu.edo.torabentoapps.daftarreseller;
 import edu.edo.torabentoapps.loginreseller;
 import edu.edo.torabentoapps.utilitize.SampleAPI;
 import retrofit2.Call;
@@ -26,7 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
-import static edu.edo.torabentoapps.R.id.daftarreseller;
 
 /**
  * Created by anggy on 17/08/2017.
@@ -91,9 +89,10 @@ public class AkunFragment extends Fragment {
                 if (response.isSuccessful()){
                     if (response.body().getNilai().equals(1)){
                         pd.dismiss();
-                        pd.dismiss();
                         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Nama Reseller",MODE_PRIVATE).edit();
                         editor.putString("namareseller", response.body().getDataArray().get(0).getIdReseller());
+                        editor.putString("username",username.getText().toString());
+                        editor.putString("password",password.getText().toString());
                         editor.apply();
                         //Toast.makeText(getActivity(), "Welcome "+getUsername(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), loginreseller.class));
@@ -105,13 +104,33 @@ public class AkunFragment extends Fragment {
                 }else {
                     pd.dismiss();
                     Toast.makeText(getActivity(), "Unsuccessfully : "+response.errorBody(), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                    alertDialog.setTitle("PESAN")
+                            .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                            .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResellerModel> call, Throwable t) {
                 pd.dismiss();
-                Toast.makeText(getActivity(), "onFailure : "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "onFailure : "+t.getMessage()+"\n Code Error : "+t.getCause(), Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("PESAN")
+                        .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                        .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
     }

@@ -47,7 +47,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.1'
     compile 'com.github.yesidlazaro:GmailBackground:1.2.0'
     //compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    compile 'com.github.yesidlazaro:GmailBackground:1.2.0'
+    //compile 'com.github.yesidlazaro:GmailBackground:1.2.0'
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
     compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
     testCompile 'junit:junit:4.12'

@@ -1,4 +1,3 @@
-
 package edu.edo.torabentoapps.Model;
 
 import com.google.gson.annotations.Expose;

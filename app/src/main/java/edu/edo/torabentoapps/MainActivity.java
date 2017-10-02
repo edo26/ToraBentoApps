@@ -1,6 +1,8 @@
 package edu.edo.torabentoapps;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomBar bottomBar;
     public ProgressDialog pd;
     MaterialSearchView searchView;
+    Menu menua;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,86 +38,111 @@ public class MainActivity extends AppCompatActivity {
 //            StrictMode.setThreadPolicy(policy);
 //        }
 
-        setContentView(R.layout.activity_main);
+        SharedPreferences espe = getSharedPreferences("Nama Reseller", MODE_PRIVATE);
+        String user = espe.getString("username", null);
+        String pass = espe.getString("password", null);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        bottomBar = (BottomBar) findViewById(R.id.bottombar);
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            Fragment fragment = null;
+//        Toast.makeText(this, "Username : " + user, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Password : " + pass, Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onTabSelected(@IdRes int tabId) {
-                switch (tabId) {
-                    case R.id.tab_home:
-                        //Toast.makeText(MainActivity.this, "Tab satu", Toast.LENGTH_SHORT).show();
-                        fragment = new ItemFragment();
-                        break;
-                    case R.id.tab_akun:
-                        //Toast.makeText(MainActivity.this, "Tab dua", Toast.LENGTH_SHORT).show();
-                        fragment = new AkunFragment();
-                        break;
-                    case R.id.tab_keranjang:
-                        //Toast.makeText(MainActivity.this, "Tab tiga", Toast.LENGTH_SHORT).show();
-                        fragment = new TransaksiFragment();
-                        break;
+        if (user != null && pass != null) {
+            startActivity(new Intent(MainActivity.this, loginreseller.class));
+            finish();
+        } else {
+            setContentView(R.layout.activity_main);
+
+            pd = new ProgressDialog(MainActivity.this);
+            pd.setTitle("Pesan");
+            pd.setMessage("Sedang mengambil data...");
+            pd.setCancelable(false);
+            pd.show();
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            searchView = (MaterialSearchView) findViewById(R.id.search_view);
+            bottomBar = (BottomBar) findViewById(R.id.bottombar);
+            bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                Fragment fragment = null;
+
+                @Override
+                public void onTabSelected(@IdRes int tabId) {
+                    switch (tabId) {
+                        case R.id.tab_home:
+                            //Toast.makeText(MainActivity.this, "Tab satu", Toast.LENGTH_SHORT).show();
+                            fragment = new ItemFragment();
+//                        if(!menua.hasVisibleItems()){
+//                            MenuItem item1 = menua.findItem(R.id.action_search);
+//                            item1.setVisible(true);
+//                        }
+                            break;
+                        case R.id.tab_akun:
+                            //Toast.makeText(MainActivity.this, "Tab dua", Toast.LENGTH_SHORT).show();
+                            fragment = new AkunFragment();
+
+                            break;
+                        case R.id.tab_keranjang:
+                            //Toast.makeText(MainActivity.this, "Tab tiga", Toast.LENGTH_SHORT).show();
+                            fragment = new TransaksiFragment();
+
+                            break;
+                    }
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.content, fragment)
+                            .commit();
                 }
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content, fragment)
-                        .commit();
-            }
-        });
+            });
 
-        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                //Do some magic
-                Toast.makeText(MainActivity.this, "Kamu sedang menuliskan + "+query, Toast.LENGTH_SHORT).show();
-                return false;
-            }
+            searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    //Do some magic
+                    //Toast.makeText(MainActivity.this, "Kamu sedang menuliskan + "+query, Toast.LENGTH_SHORT).show();
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Do some magic
-                return false;
-            }
-        });
+                    return false;
+                }
 
-        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-                //Do some magic
-            }
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    //Do some magic
+                    return false;
+                }
+            });
 
-            @Override
-            public void onSearchViewClosed() {
-                //Do some magic
-            }
-        });
-    }
+            searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+                @Override
+                public void onSearchViewShown() {
+                    //Do some magic
+                }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        pd = new ProgressDialog(MainActivity.this);
-        pd.setTitle("Pesan");
-        pd.setMessage("Sedang mengambil data...");
-        pd.setCancelable(false);
-        pd.show();
+                @Override
+                public void onSearchViewClosed() {
+                    //Do some magic
+                }
+            });
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        pd.dismiss();
+        //pd.dismiss();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        pd.dismiss();
+        //pd.dismiss();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.historitransaksi :
+                startActivity(new Intent(MainActivity.this,historitransaksiclass.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -121,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
-
+        menua = menu;
         return true;
     }
 }

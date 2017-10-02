@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 
 import edu.edo.torabentoapps.BuildConfig;
+import edu.edo.torabentoapps.Model.DataArray;
 import edu.edo.torabentoapps.Model.ResellerModel;
 import edu.edo.torabentoapps.Model.itemRespon;
 import okhttp3.Cache;
@@ -57,6 +58,20 @@ public interface SampleAPI {
                                  @Field("harga") String harga,
                                  @Field("status") String status,
                                  @Field("gambar") String gambar);
+
+  @FormUrlEncoded
+  @POST("json_t_makanan.php?operasi=update")
+  Call<itemRespon> updateMakanan(@Field("id_reseller") String idreseller,
+                                 @Field("id_makanan") String idmakanan,
+                                 @Field("nama_makanan") String namamakanan,
+                                 @Field("stok") String stok,
+                                 @Field("harga") String harga,
+                                 @Field("status") String status,
+                                 @Field("gambar") String gambar);
+
+  @FormUrlEncoded
+  @POST("json_t_makanan.php?operasi=delete")
+  Call<itemRespon> deleteMakanan(@Field("id_makanan") String idmakanan);
 
 
   class Factory {
