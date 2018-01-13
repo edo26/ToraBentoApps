@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/checkout"
+        android:id="@+id/checkoutbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:roundedCorners="true"
@@ -26,6 +26,7 @@
         android:id="@+id/recyclerviewTransaksi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:stackFromEnd="true"
         />
 
 </LinearLayout>

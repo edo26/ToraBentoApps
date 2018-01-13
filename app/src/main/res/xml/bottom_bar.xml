@@ -16,6 +16,6 @@
         id="@+id/tab_akun"
         icon="@drawable/ic_account_circle"
         activeColor="@color/Black"
-        title="Akun"
+        title="Reseller"
         />
 </Tabs>

@@ -28,9 +28,6 @@
 
     </LinearLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,13 +38,14 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Pendaftaran Reseller"
                 android:gravity="center"
                 android:textSize="32sp"
+                android:textColor="@color/Black"
                 android:layout_marginBottom="10dp"
                 />
-
+<!--
             <com.beardedhen.androidbootstrap.BootstrapEditText
                 android:id="@+id/namareseller"
                 android:layout_width="match_parent"
@@ -59,18 +57,7 @@
                 android:textSize="13sp"
                 />
 
-            <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/alamatreseller"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:hint="Alamat"
-                android:padding="16dp"
-                android:layout_margin="5dp"
-                android:inputType="textLongMessage"
-                android:textSize="13sp"
-                android:layout_gravity="start"
-                android:gravity="top"
-                />
+
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
                 android:id="@+id/nomorhpreseller"
@@ -83,16 +70,7 @@
                 android:textSize="13sp"
                 />
 
-            <com.beardedhen.androidbootstrap.BootstrapEditText
-                android:id="@+id/emailreseller"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Email"
-                android:padding="16dp"
-                android:layout_margin="5dp"
-                android:inputType="textEmailAddress"
-                android:textSize="13sp"
-                />
+
 
             <com.beardedhen.androidbootstrap.BootstrapEditText
                 android:id="@+id/usernamereseller"
@@ -115,6 +93,40 @@
                 android:textSize="13sp"
                 android:inputType="textPassword"
                 />
+-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/prosedurjadireseller"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="20sp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/emailreseller"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Email"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:inputType="textEmailAddress"
+                android:textSize="13sp"
+                />
+
+            <com.beardedhen.androidbootstrap.BootstrapEditText
+                android:id="@+id/alamatreseller"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Alamat"
+                android:padding="16dp"
+                android:layout_margin="5dp"
+                android:inputType="textImeMultiLine"
+                android:textSize="13sp"
+                android:layout_gravity="start"
+                android:gravity="top"
+                />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/daftarreseller"
@@ -132,7 +144,5 @@
                 />
 
         </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

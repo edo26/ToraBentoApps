@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16sp"
+    android:layout_margin="16sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumlah"
+            android:textSize="20sp"
+            android:layout_marginRight="40dp"
+            android:textColor="@color/Black"
+            />
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:id="@+id/ubahjumlahstoknya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/tombolubahstok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:bootstrapBrand="info"
+            android:textColor="@color/Black"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:text="UBAH"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/tombolbatalubahstok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:bootstrapBrand="danger"
+            android:textColor="@color/Black"
+            app:bootstrapSize="lg"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:text="BATAL"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

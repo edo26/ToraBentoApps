@@ -30,59 +30,154 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_weight="5"
-        >
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Lihat stok Reseller lain"
+            android:textColor="@color/Black"
+            android:textSize="20sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerviewuntukreseller"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="Perbaharui Jumlah Stok Makanan Anda"
+        android:textColor="@color/Black"
+        android:gravity="center"
+        />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_weight="1.8"
             >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="5dp"
+                >
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/ekado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ekado"
+                    />
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/ebifurai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ebifurai" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="5dp"
+                >
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/chickenkatsu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chickenkatsu"
+                    />
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/beefteriyaki"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/kakinaga" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="5dp"
+                >
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/kaniroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/kaniroll"
+                    />
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/shirmproll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/shrimproll" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="5dp"
+                >
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/spicychicken"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/spicychicken"
+                    />
+
+                <com.beardedhen.androidbootstrap.BootstrapCircleThumbnail
+                    android:id="@+id/eggchickenroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/eggchickenroll" />
+
+            </LinearLayout>
+
             <com.beardedhen.androidbootstrap.BootstrapButton
-                android:id="@+id/tomboltambah"
+                android:id="@+id/tombollogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:roundedCorners="true"
-                app:bootstrapBrand="info"
-                android:text="TAMBAH MAKANAN"
+                app:bootstrapBrand="danger"
+                android:text="LOGOUT"
                 app:bootstrapSize="lg"
                 app:buttonMode="regular"
                 app:showOutline="false"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_margin="20dp"
                 />
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/tombollogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:roundedCorners="true"
-            app:bootstrapBrand="danger"
-            android:text="LOGOUT"
-            app:bootstrapSize="lg"
-            app:buttonMode="regular"
-            app:showOutline="false"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            />
-
         </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

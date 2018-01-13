@@ -1,11 +1,41 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="AndroidDomInspection" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Default" level="ERROR" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="AndroidElementNotAllowed" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Default" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="AndroidLintCustomError" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Default" level="ERROR" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="AndroidLintCustomWarning" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Default" level="WARNING" enabled="true" />
+    </inspection_tool>
     <inspection_tool class="AndroidLintGradleCompatible" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="AndroidLintInvalidId" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="AndroidMissingOnClickHandler" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Default" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="AndroidNonConstantResIdsInSwitch" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Default" level="ERROR" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="AndroidUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Default" level="WARNING" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="JniMissingFunction" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Default" level="ERROR" enabled="true" />
+    </inspection_tool>
     <inspection_tool class="LoggerInitializedWithForeignClass" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="loggerClassName" value="org.apache.log4j.Logger,org.slf4j.LoggerFactory,org.apache.commons.logging.LogFactory,java.util.logging.Logger" />
       <option name="loggerFactoryMethodName" value="getLogger,getLogger,getLog,getLogger" />
+    </inspection_tool>
+    <inspection_tool class="ResourceType" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="Default" level="ERROR" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="XmlWrongFileType" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Default" level="WARNING" enabled="true" />
     </inspection_tool>
   </profile>
 </component>

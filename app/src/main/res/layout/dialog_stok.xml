@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16sp"
+    android:layout_margin="16sp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ebi Furai"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chicken Katsu"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beef Teriyaki"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ekado"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shrimp Roll"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chicken Spicy"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kani Roll"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20sp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Egg Chicken Roll"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            />
+
+        <TextView
+            android:id="@+id/jumlahdistok8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 buah"
+            android:textSize="20sp"
+            android:textColor="@color/Black"
+            android:gravity="end"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
