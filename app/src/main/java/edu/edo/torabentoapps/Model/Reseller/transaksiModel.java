@@ -34,13 +34,13 @@ public class transaksiModel {
         this.tanggal_transaksi = tanggal_transaksi;
     }
 
-//    public String getStatuspemesanan() {
-//        return statuspemesanan;
-//    }
-//
-//    public void setStatuspemesanan(String statuspemesanan) {
-//        this.statuspemesanan = statuspemesanan;
-//    }
+    public String getStatuspemesanan() {
+        return statuspemesanan;
+    }
+
+    public void setStatuspemesanan(String statuspemesanan) {
+        this.statuspemesanan = statuspemesanan;
+    }
 
     public String getAlamat() {
         return alamat;

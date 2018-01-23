@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewitemkonfirmasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/tanggalpesankf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="2017-08-09"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/namapembelikf"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Pembeli : Udin"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/idtransaksikf"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ID : 19"
+                        android:padding="10dp"
+                        android:gravity="end"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/tomboldetailpesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        app:bootstrapBrand="info"
+                        android:textColor="@color/Black"
+                        android:layout_margin="15dp"
+                        app:bootstrapSize="lg"
+                        app:buttonMode="regular"
+                        app:showOutline="false"
+                        app:roundedCorners="true"
+                        android:text="DETAIL PESANAN"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@color/Black"
+                        android:textSize="16sp"
+                        android:text="Total harga : "
+                        />
+
+                    <TextView
+                        android:id="@+id/totalhargakf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textColor="@color/Red"
+                        android:textSize="16dp"
+                        android:text="Rp.90000"
+                        android:gravity="start"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:id="@+id/resipembayaran"
+                        android:layout_width="170dp"
+                        android:layout_height="170dp"
+                        android:src="@drawable/noimage"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/alamatpengirimankf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat pengiriman : \nJln. pasir putih"
+                        android:padding="10dp"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/statuspengirimankf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status Pemesanan : Pending"
+                        android:padding="10dp"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/konfirmasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        app:bootstrapBrand="danger"
+                        android:textColor="@color/Black"
+                        android:layout_margin="15dp"
+                        app:bootstrapSize="lg"
+                        app:buttonMode="regular"
+                        app:showOutline="false"
+                        app:roundedCorners="true"
+                        android:text="KONFIRMASI"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>

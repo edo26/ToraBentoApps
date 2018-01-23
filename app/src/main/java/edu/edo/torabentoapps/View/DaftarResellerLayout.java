@@ -1,6 +1,7 @@
 package edu.edo.torabentoapps.View;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -116,8 +117,8 @@ public class DaftarResellerLayout extends AppCompatActivity {
                                         @Override
                                         public void onResponse(Call<ModelLogin> call, Response<ModelLogin> response) {
                                             if(response.isSuccessful()){
-                                                //tampung = response.body().getDataArray().get(0).getIdReseller();
-                                                //Toast.makeText(DaftarResellerLayout.this, response.body().getDataArray().get(0).getIdReseller(), Toast.LENGTH_SHORT).show();
+                                                //tampung = response.body().getDataArray1().get(0).getIdReseller();
+                                                //Toast.makeText(DaftarResellerLayout.this, response.body().getDataArray1().get(0).getIdReseller(), Toast.LENGTH_SHORT).show();
                                                 insertDefaultstok(response.body().getDataArray().get(0).getIdReseller());
                                             }else{
                                                 Toast.makeText(DaftarResellerLayout.this, "Error response unsuccesfully "+response.errorBody(), Toast.LENGTH_SHORT).show();
@@ -129,8 +130,10 @@ public class DaftarResellerLayout extends AppCompatActivity {
                                             Toast.makeText(DaftarResellerLayout.this, "Gagal on failure tod "+t.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                    Toast.makeText(DaftarResellerLayout.this, "Daftar reseller telah berhasil.", Toast.LENGTH_LONG).show();
-
+                                    //Toast.makeText(DaftarResellerLayout.this, "Transaksi pembelian telah berhasil, silahkan tunggu konfirmasi dari reseller untuk pengiriman makanan.", Toast.LENGTH_LONG).show();
+                                    new AlertDialog.Builder(DaftarResellerLayout.this).setIcon(R.drawable.sukses).setTitle("PESAN").
+                                            setMessage("Pendaftaran Reseller Berhasil!").
+                                            show();
                                 }
                             })
                             .withOnFailCallback(new BackgroundMail.OnFailCallback() {
@@ -161,11 +164,11 @@ public class DaftarResellerLayout extends AppCompatActivity {
 //            @Override
 //            public void onResponse(Call<ModelLogin> call, Response<ModelLogin> response) {
 //                if(response.isSuccessful()){
-//                    if(response.body().getDataArray().size() > 1 && !response.body().getNilai().equals(1)){
+//                    if(response.body().getDataArray1().size() > 1 && !response.body().getNilai().equals(1)){
 //                        Toast.makeText(DaftarResellerLayout.this, "Error ada email yang sama !", Toast.LENGTH_SHORT).show();
 //                    }else{
 //                        Toast.makeText(DaftarResellerLayout.this, "Ini telah terlewati....", Toast.LENGTH_SHORT).show();
-//                        tampung = response.body().getDataArray().get(0).getIdReseller();
+//                        tampung = response.body().getDataArray1().get(0).getIdReseller();
 //                    }
 //                }else{
 //                    Toast.makeText(DaftarResellerLayout.this, "Error : "+response.errorBody() + "Pesan : "+response.message(), Toast.LENGTH_SHORT).show();

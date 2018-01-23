@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ModelMakanan {
+public class ModelTotalStok {
 
     @SerializedName("nilai")
     @Expose
     private Integer nilai;
     @SerializedName("data_array")
     @Expose
-    private List<DataArray> dataArray = null;
+    private List<DataArray1> dataArray1 = null;
 
     public Integer getNilai() {
         return nilai;
@@ -23,12 +23,12 @@ public class ModelMakanan {
         this.nilai = nilai;
     }
 
-    public List<DataArray> getDataArray() {
-        return dataArray;
+    public List<DataArray1> getDataArray1() {
+        return dataArray1;
     }
 
-    public void setDataArray(List<DataArray> dataArray) {
-        this.dataArray = dataArray;
+    public void setDataArray1(List<DataArray1> dataArray1) {
+        this.dataArray1 = dataArray1;
     }
 
 }

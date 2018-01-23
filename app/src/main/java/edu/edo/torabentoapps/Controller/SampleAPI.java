@@ -9,10 +9,13 @@ import java.util.concurrent.TimeUnit;
 
 import edu.edo.torabentoapps.BuildConfig;
 import edu.edo.torabentoapps.Model.Keranjang.ModelKeranjangDB;
+import edu.edo.torabentoapps.Model.Makanan.ModelMakanan;
 import edu.edo.torabentoapps.Model.Makanan.ModelStokMakanan;
+import edu.edo.torabentoapps.Model.Makanan.ModelTotalStok;
 import edu.edo.torabentoapps.Model.Pembeli.ModelPembeli;
 import edu.edo.torabentoapps.Model.Reseller.ModelLogin;
-import edu.edo.torabentoapps.Model.Makanan.ModelMakanan;
+import edu.edo.torabentoapps.Model.Transaksi.ModelDetailPesanan;
+import edu.edo.torabentoapps.Model.Transaksi.ModelTransaksi;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -36,7 +39,7 @@ public interface SampleAPI {
 
 
   @FormUrlEncoded
-  @POST("json_t_reseller.php?operasi=insert")
+  @POST("json_t_pembeli.php?operasi=insert")
   Call<ModelPembeli> insertDataPembeli(
           @Field("nama_pembeli") String nama,
           @Field("nomorhp") String nomorhp,
@@ -54,7 +57,7 @@ public interface SampleAPI {
 
   @FormUrlEncoded
   @POST("json_t_keranjang.php?operasi=insert")
-  Call<ModelLogin> insertDataKeranjang(
+  Call<ModelKeranjangDB> insertDataKeranjang(
           @Field("id_makanan") String id_makanan,
           @Field("id_pembeli") String id_pembeli,
           @Field("qty") String qty
@@ -76,8 +79,19 @@ public interface SampleAPI {
   );
 
   @FormUrlEncoded
-  @POST("json_t_resellerdashboard.php?operasi=view")
+  @POST("json_t_resellerdashboard.php?operasi=viewStok")
   Call<ModelStokMakanan> viewStokReseller(@Field("email") String email);
+
+
+  @GET("json_t_resellerdashboard.php?operasi=view")
+  Call<ModelStokMakanan> viewStok();
+
+  @GET("json_t_transaksi.php?operasi=view")
+  Call<ModelTransaksi> viewTransaksi();
+
+  @FormUrlEncoded
+  @POST("json_t_transaksi.php?operasi=viewHistory")
+  Call<ModelTransaksi> viewHistory(@Field("id_transaksi") String id_transaksi);
 
   @FormUrlEncoded
   @POST("json_t_reseller.php?operasi=getIdReseller")
@@ -143,6 +157,28 @@ public interface SampleAPI {
   Call<ModelLogin> submitSQL(@Field("SQL") String QuerySQLnya);
 
   @FormUrlEncoded
+  @POST("json_t_transaksi.php?operasi=tesSQL")
+  Call<ModelDetailPesanan> submitSQLTr(@Field("SQL") String QuerySQLnya);
+
+  @FormUrlEncoded
+  @POST("json_t_transaksi.php?operasi=tesSQL")
+  Call<ModelDetailPesanan> insertTransaksi(@Field("SQL") String QuerySQLnya);
+
+  @FormUrlEncoded
+  @POST("json_t_transaksi.php?operasi=insert")
+  Call<ModelDetailPesanan> insertManualTrans(@Field("id_reseller") String id_reseller,
+                                             @Field("id_pembeli") String id_pembeli,
+                                             @Field("status_transaksi") String status_transaksi,
+                                             @Field("tanggal_transaksi") String tanggal_transaksi,
+                                             @Field("resipembayaran") String resi_pembayaran,
+                                             @Field("nama_pembeli") String nama_pembeli
+                                             );
+
+  @FormUrlEncoded
+  @POST("json_t_resellerdashboard.php?operasi=tesSQL")
+  Call<ModelTotalStok> submitSQLRd(@Field("SQL") String QuerySQLnya);
+
+  @FormUrlEncoded
   @POST("json_t_makanan.php?operasi=update")
   Call<ModelMakanan> updateMakanan(@Field("id_reseller") String idreseller,
                                    @Field("id_makanan") String idmakanan,
@@ -151,6 +187,11 @@ public interface SampleAPI {
                                    @Field("harga") String harga,
                                    @Field("status") String status,
                                    @Field("gambar") String gambar);
+
+  @FormUrlEncoded
+  @POST("json_t_transaksi.php?operasi=update")
+  Call<ModelTransaksi> updateTransaksi(@Field("id_transaksi") String idtransaksi,
+                                   @Field("status_transaksi") String status);
 
   @FormUrlEncoded
   @POST("json_t_makanan.php?operasi=delete")

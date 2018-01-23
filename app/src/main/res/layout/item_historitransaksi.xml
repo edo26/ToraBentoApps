@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewitemtransaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Atas nama : "
+                        android:padding="16dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/namapembeliht"
+                        android:padding="16dp"
+                        android:text="Faisal"
+                        android:textColor="@color/Black"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/idtransaksi"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ID : 19"
+                        android:padding="16dp"
+                        android:gravity="end"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/tomboldetailpesananht"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        app:bootstrapBrand="info"
+                        android:textColor="@color/Black"
+                        android:layout_margin="15dp"
+                        app:bootstrapSize="lg"
+                        app:buttonMode="regular"
+                        app:showOutline="false"
+                        app:roundedCorners="true"
+                        android:text="DETAIL PESANAN"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textColor="@color/Black"
+                        android:textSize="16sp"
+                        android:text="Total harga : "
+                        />
+
+                    <TextView
+                        android:id="@+id/totalharga"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textColor="@color/Red"
+                        android:textSize="16dp"
+                        android:text="Rp.30000"
+                        android:gravity="end"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/alamatpengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat pengiriman : \nJln. manana jashdjahsdkajhsdjaskdjhakjsdhkajhsdkahsdkjahkjsdhakjsdhkajshdajkhd"
+                        android:padding="16dp"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/statuspengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status Pemesanan : Pending"
+                        android:padding="16dp"
+                        android:textColor="@color/Black"
+                        android:textSize="16dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/tanggalpesan"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2017-08-09"
+                        android:padding="5dp"
+                        android:textStyle="italic"
+                        android:gravity="end"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>

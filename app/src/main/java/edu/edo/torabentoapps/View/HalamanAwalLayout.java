@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.roughike.bottombar.BottomBar;
@@ -20,7 +21,7 @@ import edu.edo.torabentoapps.R;
 public class HalamanAwalLayout extends AppCompatActivity {
     private BottomBar bottomBar;
     public ProgressDialog pd;
-    MaterialSearchView searchView;
+    static MaterialSearchView searchView;
     Menu menua;
 
 
@@ -49,6 +50,7 @@ public class HalamanAwalLayout extends AppCompatActivity {
             pd = new ProgressDialog(HalamanAwalLayout.this);
             pd.setTitle("Pesan");
             pd.setMessage("Sedang mengambil data...");
+            pd.setIcon(R.drawable.loading);
 //            pd.setCancelable(false);
             pd.show();
 
@@ -64,6 +66,7 @@ public class HalamanAwalLayout extends AppCompatActivity {
                     switch (tabId) {
                         case R.id.tab_home:
                             //Toast.makeText(HalamanAwalLayout.this, "Tab satu", Toast.LENGTH_SHORT).show();
+                            searchView.setEnabled(true);
                             fragment = new HomeFragment();
                             setTitle("Tora Bento Apps");
 //                        if(!menua.hasVisibleItems()){
@@ -73,12 +76,14 @@ public class HalamanAwalLayout extends AppCompatActivity {
                             break;
                         case R.id.tab_akun:
                             //Toast.makeText(HalamanAwalLayout.this, "Tab dua", Toast.LENGTH_SHORT).show();
+                            searchView.setVisibility(View.GONE);
                             fragment = new ResellerFragment();
                             setTitle("Login Reseller");
                             break;
                         case R.id.tab_keranjang:
                             //Toast.makeText(HalamanAwalLayout.this, "Tab tiga", Toast.LENGTH_SHORT).show();
-
+                            //searchView.setEnabled(false);
+                            searchView.setVisibility(View.GONE);
                             fragment = new KeranjangFragment();
                             setTitle("Keranjang");
                             break;
@@ -90,33 +95,7 @@ public class HalamanAwalLayout extends AppCompatActivity {
                 }
             });
 
-            searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    //Do some magic
-                    //Toast.makeText(HalamanAwalLayout.this, "Kamu sedang menuliskan + "+query, Toast.LENGTH_SHORT).show();
 
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    //Do some magic
-                    return false;
-                }
-            });
-
-            searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-                @Override
-                public void onSearchViewShown() {
-                    //Do some magic
-                }
-
-                @Override
-                public void onSearchViewClosed() {
-                    //Do some magic
-                }
-            });
         }
     }
 

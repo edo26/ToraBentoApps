@@ -44,10 +44,10 @@ public class ResellerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.login_activity, container, false);
-
         pd = new ProgressDialog(getActivity());
         pd.setTitle("Pesan");
         pd.setMessage("Memuat...");
+        //HalamanAwalLayout.searchView.setEnabled(false);
         username = (BootstrapEditText)view.findViewById(R.id.username);
         password = (BootstrapEditText)view.findViewById(R.id.password);
         login = (BootstrapButton)view.findViewById(R.id.btnbirumuda);

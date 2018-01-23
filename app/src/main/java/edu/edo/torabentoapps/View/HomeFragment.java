@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.edo.torabentoapps.Controller.SampleAPI;
 import edu.edo.torabentoapps.Controller.MakananAdapter;
-import edu.edo.torabentoapps.Model.Makanan.itemRespon;
+import edu.edo.torabentoapps.Controller.SampleAPI;
+import edu.edo.torabentoapps.Model.Makanan.DataArray;
 import edu.edo.torabentoapps.Model.Makanan.ModelMakanan;
 import edu.edo.torabentoapps.R;
 import retrofit2.Call;
@@ -27,7 +29,7 @@ public class HomeFragment extends Fragment {
     RecyclerView.LayoutManager mLayout;
     RecyclerView.Adapter mAdapter;
     //HalamanAwalLayout main = new HalamanAwalLayout();
-    private List<itemRespon> imMakanan = new ArrayList<>();
+    private List<DataArray> imMakanan = new ArrayList<>();
     //public boolean tesDulu = false;
 
     public HomeFragment() {
@@ -60,7 +62,7 @@ public class HomeFragment extends Fragment {
                 try{
                     if (response.body().getNilai().equals(1)) {
                         //Toast.makeText(getActivity(), "onSuccessfully Response", Toast.LENGTH_SHORT).show();
-                        imMakanan = response.body().getLiModel();
+                        imMakanan = response.body().getDataArray();
                         mAdapter = new MakananAdapter(imMakanan,getContext());
                         if(mAdapter.getItemCount() == 0){
                             ((HalamanAwalLayout)getActivity()).pd.dismiss();
@@ -68,6 +70,31 @@ public class HomeFragment extends Fragment {
                         }else{
                             ((HalamanAwalLayout)getActivity()).pd.dismiss();
                             mRecyler.setAdapter(mAdapter);
+                            HalamanAwalLayout.searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+                                @Override
+                                public boolean onQueryTextSubmit(String query) {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onQueryTextChange(String newText) {
+                                    Toast.makeText(getActivity(), "Kamu mengetikan "+newText, Toast.LENGTH_SHORT).show();
+                                    for(int i=0;i<imMakanan.size();i++){
+                                        if(imMakanan.get(i).getNamaMakanan().equalsIgnoreCase(newText)){
+                                            DataArray model;
+                                            model = imMakanan.get(i);
+                                            imMakanan.clear();
+                                            imMakanan.add(model);
+                                            mAdapter = new MakananAdapter(imMakanan,getContext());
+                                            mAdapter.notifyDataSetChanged();
+                                            mRecyler.setAdapter(mAdapter);
+                                        }else if (imMakanan.get(i).getNamaMakanan().equalsIgnoreCase("")){
+                                            loadMakanan();
+                                        }
+                                    }
+                                    return false;
+                                }
+                            });
                             //   ((HalamanAwalLayout)getActivity()).pd.dismiss();
 //                    ((HalamanAwalLayout)getActivity()).pd.cancel();
                         }
@@ -76,6 +103,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity(), "Error " + response.errorBody(), Toast.LENGTH_SHORT).show();
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                         alertDialog.setTitle("PESAN")
+                                .setIcon(R.drawable.error)
                                 .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
                                 .show();
                     }
@@ -99,8 +127,12 @@ public class HomeFragment extends Fragment {
 //                            .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
 //                            .show();
 //                }
-                Toast.makeText(getActivity(), "onFailure bego : " + t.getMessage(), Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(getActivity(), "onFailure bego : " + t.getMessage(), Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("PESAN")
+                        .setIcon(R.drawable.error)
+                        .setMessage("PERIKSA LAGI KONEKSI INTERNET ANDA!")
+                        .show();
             }
         });
 

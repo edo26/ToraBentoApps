@@ -1,8 +1,12 @@
 package edu.edo.torabentoapps.Controller;
 
-import android.app.ProgressDialog;
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,12 +19,14 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.roughike.bottombar.BottomBar;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import edu.edo.torabentoapps.Model.Keranjang.DataArray1;
 import edu.edo.torabentoapps.R;
+import edu.edo.torabentoapps.View.KeranjangFragment;
 
 /**
  * Created by anggy on 20/08/2017.
@@ -48,10 +54,8 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.hold
     }
 
     @Override
-    public void onBindViewHolder(holderTransaksi holder, final int position) {
-        final ProgressDialog pd = new ProgressDialog(konteks);
-        pd.setTitle("Pesan");
-        pd.setMessage("Harap tunggu...");
+    public void onBindViewHolder(final holderTransaksi holder, final int position) {
+
         DataArray1 item = data.get(position);
         //holder.transaksiID.setText(item.getTransaksiID());
         holder.namamakanan.setText(item.getNamaMakanan());
@@ -72,10 +76,22 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.hold
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                pd.show();
+
                                 new KeranjangActivity().hapusData(konteks,data,position);
+                                //notifyDataSetChanged();
+
+                                KeranjangFragment frag = new KeranjangFragment();
+                                FragmentManager fragmentManager = ((FragmentActivity) konteks).getSupportFragmentManager();
+                                FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.content, frag);
+                                fragmentTransaction.commit();
+                                BottomBar bottomBar = (BottomBar)((Activity) konteks).findViewById(R.id.bottombar);
+                                bottomBar.selectTabAtPosition(0);
+                                bottomBar.selectTabAtPosition(1);
+
                                 Toast.makeText(konteks, "Makanan Telah Terhapus!", Toast.LENGTH_SHORT).show();
-                                pd.dismiss();
+
+                                //holder.suaep.setRefreshing(true);
                             }
                         })
                         .onNegative(new MaterialDialog.SingleButtonCallback() {
@@ -103,6 +119,7 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.hold
         public ImageView thumbnailsItem;
         public CardView cardViewTransaksi;
         public BootstrapButton hapus;
+        SwipeRefreshLayout suaep;
 
         public holderTransaksi(View itemView) {
             super(itemView);
@@ -116,6 +133,7 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.hold
             //alamatkirim = (TextView)itemView.findViewById(R.id.alamatkirim);
             thumbnailsItem = (ImageView)itemView.findViewById(R.id.thumbnailsitem);
             cardViewTransaksi = (CardView)itemView.findViewById(R.id.cardViewitemtransaksi);
+            suaep = (SwipeRefreshLayout)itemView.findViewById(R.id.swipe);
         }
     }
 

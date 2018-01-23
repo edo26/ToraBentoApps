@@ -131,17 +131,17 @@ public class LoginLayout extends AppCompatActivity {
                     pd.dismiss();
                     ItemType<ItemResellerBinding> bookType = new ItemType<ItemResellerBinding>(R.layout.item_reseller) {
                         @Override
-                        public void onBind(@NotNull Holder<ItemResellerBinding> holder) {
+                        public void onBind(@NotNull final Holder<ItemResellerBinding> holder) {
                             //System.out.println("Bound " +holder.getBinding().getItem() + " at #" + holder.getAdapterPosition());
                          holder.itemView.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View view) {
                                  //Toast.makeText(LoginLayout.this, "Apakah yang aku klik ini : "+holder.getBinding().getItem().getEmail()+" Posisi ke "+holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
                                 //Email siapa kah ini ?
-                                 SharedPreferences espe = getSharedPreferences("Nama Reseller", MODE_PRIVATE);
-                                 final String email = espe.getString("username", null);
+//                                 SharedPreferences espe = getSharedPreferences("Nama Reseller", MODE_PRIVATE);
+//                                 final String email = espe.getString("username", null);
 
-                                 SampleAPI.Factory.getIstance(LoginLayout.this).viewStokReseller(email).enqueue(new Callback<ModelStokMakanan>() {
+                                 SampleAPI.Factory.getIstance(LoginLayout.this).viewStokReseller(holder.getBinding().getItem().getEmail()).enqueue(new Callback<ModelStokMakanan>() {
                                      @Override
                                      public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                          if(response.isSuccessful()){
@@ -282,7 +282,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                //Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -329,7 +334,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                            //    Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -376,7 +386,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                             //   Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -423,7 +438,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                             //   Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -470,7 +490,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                            //    Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -517,7 +542,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                            //    Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -564,7 +594,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                            //    Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }
@@ -611,7 +646,12 @@ public class LoginLayout extends AppCompatActivity {
                                     public void onResponse(Call<ModelStokMakanan> call, Response<ModelStokMakanan> response) {
                                         if(response.isSuccessful()){
                                             if(response.body().getNilai().equals(1)){
-                                                Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                            //    Toast.makeText(LoginLayout.this, "Berhasil tambah stok!", Toast.LENGTH_SHORT).show();
+                                                new AlertDialog.Builder(LoginLayout.this)
+                                                        .setTitle("PESAN")
+                                                        .setIcon(R.drawable.sukses)
+                                                        .setMessage("Mengubah Jumlah Stok Makanan Berhasil!")
+                                                        .show();
                                             }else{
                                                 Toast.makeText(LoginLayout.this, "Ada yang salah Nilai = 0", Toast.LENGTH_SHORT).show();
                                             }

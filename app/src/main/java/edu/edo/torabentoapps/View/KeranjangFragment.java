@@ -31,6 +31,7 @@ public class KeranjangFragment extends Fragment {
     RecyclerView.LayoutManager rvL;
     List<DataArray1> databaru = new ArrayList<>();
     KeranjangAdapter adapter;
+
     public KeranjangFragment() {
 
     }
@@ -40,6 +41,7 @@ public class KeranjangFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_transaksi, container, false);
         rvTransaksi = (RecyclerView)v.findViewById(R.id.recyclerviewTransaksi);
+        //HalamanAwalLayout.searchView.setEnabled(false);
         BootstrapButton checkout = (BootstrapButton)v.findViewById(R.id.checkoutbutton);
         rvTransaksi.setHasFixedSize(true);
         rvL = new LinearLayoutManager(v.getContext());
@@ -54,7 +56,11 @@ public class KeranjangFragment extends Fragment {
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(),BiodataPembeliLayout.class));
+                if(databaru == null) {
+                    Toast.makeText(view.getContext(), "Data Kosong", Toast.LENGTH_SHORT).show();
+                }else{
+                    startActivity(new Intent(view.getContext(),BiodataPembeliLayout.class));
+                }
             }
         });
         return v;

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/checkoutbutton"
         android:layout_width="match_parent"

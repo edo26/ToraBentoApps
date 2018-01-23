@@ -7,12 +7,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 
+import java.util.List;
+
 import edu.edo.torabentoapps.Controller.HistoryTransaksiAdapter;
+import edu.edo.torabentoapps.Controller.SampleAPI;
+import edu.edo.torabentoapps.Model.Transaksi.DataArray;
+import edu.edo.torabentoapps.Model.Transaksi.ModelTransaksi;
 import edu.edo.torabentoapps.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by anggy on 02/10/2017.
@@ -24,6 +34,7 @@ public class HistoryTransaksiLayout extends AppCompatActivity {
     BootstrapButton cari;
     RecyclerView rvTransaksi;
     RecyclerView.LayoutManager rvL;
+    List<DataArray> data;
     HistoryTransaksiAdapter adapter;
 
     @Override
@@ -44,8 +55,42 @@ public class HistoryTransaksiLayout extends AppCompatActivity {
         rvTransaksi.setHasFixedSize(true);
         rvL = new LinearLayoutManager(this);
         rvTransaksi.setLayoutManager(rvL);
-        adapter = new HistoryTransaksiAdapter();
-        rvTransaksi.setAdapter(adapter);
+        cari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(idtransaksi.getText().toString().equals("")){
+                    Toast.makeText(HistoryTransaksiLayout.this, "Tolong isi ID Transaksi", Toast.LENGTH_SHORT).show();
+                }else{
+                    loadHistory(idtransaksi.getText().toString());
+                }
+            }
+        });
+    }
+
+    private void loadHistory(String idtransaksi){
+        SampleAPI.Factory.getIstance(HistoryTransaksiLayout.this).viewHistory(idtransaksi).enqueue(new Callback<ModelTransaksi>() {
+            @Override
+            public void onResponse(Call<ModelTransaksi> call, Response<ModelTransaksi> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getNilai().equals(1)){
+                        data = response.body().getDataArray();
+                        adapter = new HistoryTransaksiAdapter(data,HistoryTransaksiLayout.this);
+
+                        //Silahkan set Adapter
+                        rvTransaksi.setAdapter(adapter);
+                    }else{
+                        Toast.makeText(HistoryTransaksiLayout.this, "Nilai 0", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(HistoryTransaksiLayout.this, "Unsuccesfully", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelTransaksi> call, Throwable t) {
+                Toast.makeText(HistoryTransaksiLayout.this, "onfailure "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

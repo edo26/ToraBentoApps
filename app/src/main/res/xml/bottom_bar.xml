@@ -4,18 +4,15 @@
         id="@+id/tab_home"
         icon="@drawable/ic_home"
         activeColor="@color/Black"
-        title="Home"
         />
     <tab
         id="@+id/tab_keranjang"
         icon="@drawable/ic_shopping_cart"
         activeColor="@color/Black"
-        title="Keranjang"
         />
     <tab
         id="@+id/tab_akun"
         icon="@drawable/ic_account_circle"
         activeColor="@color/Black"
-        title="Reseller"
         />
 </Tabs>
